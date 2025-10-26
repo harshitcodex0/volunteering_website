@@ -79,13 +79,25 @@ if (!isset($_SESSION['user_id'])) {
         </nav>
     </header>
 
-    <div class="demo-content">
-        <h1>Navigation with Profile Dropdown</h1>
-        <p>Click on the profile picture to see the dropdown menu!</p>
-        <p style="margin-top: 1rem; font-size: 1rem;">📱 Resize your browser to see the hamburger menu in action</p>
+    <div class="atf_40">
+        <div class=" responsive-container-block big-cont">
+            <div class="responsive-container-block blue">
+            </div>
+            <div class="responsive-container-block bg">
+            <p class="text-blk title">
+                I'M A UI/UX DESIGNER
+            </p>
+            <p class="text-blk heading">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget purus lectus viverra in semper nec pretium mus
+            </p>
+            <form class="form-blk">
+                <a class="text-blk button">
+                Explore Our Events
+                </a>
+            </form>
+            </div>
+        </div>
     </div>
-
-
 
 
 
@@ -157,8 +169,7 @@ if (!isset($_SESSION['user_id'])) {
     <div>
         <div id="app"></div>
 
-        <a href="https://youtu.be/5ptXXNjuUfg" target="_blank" data-keyframers-credit style="color: #FFF"></a>
-        <script src="https://codepen.io/shshaw/pen/QmZYMG.js"></script>
+        
     </div>
 
 

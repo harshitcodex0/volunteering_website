@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['name'];
             $_SESSION['role'] = $user['role'];
-            header("Location: dashboard.php");
+            header("Location: index.php");
             exit;
         } else {
             $error = "Invalid password.";
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="stylesheet" href="dist/output.css" />
     <link rel="stylesheet" href="dist/styles.css" />
   </head>
-  <body class="bg-gray-50 min-h-screen flex items-center justify-center">
+  <body class=" border-gray-500 min-h-screen flex items-center justify-center" style="background-color: #E4DFDA;">
     <main role="main" class="w-full flex items-center justify-center p-4">
       <!-- login container -->
       <section
