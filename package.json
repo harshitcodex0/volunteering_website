@@ -1,0 +1,21 @@
+{
+  "name": "volunteering-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "postcss ./src/input.css -o ./dist/output.css",
+    "dev": "npm run build:css -- --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.14",
+    "http-server": "^14.1.1",
+    "postcss-cli": "^11.0.1",
+    "tailwindcss": "^4.1.14"
+  }
+}
