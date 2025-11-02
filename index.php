@@ -889,7 +889,7 @@ article .content > div:last-child {
                 <i class='bx bx-menu'></i>
             </div>
 
-            <a href="index.php" class="nav__logo">MITVOLS</a>
+            <a href="index.php" class="nav__logo">VolunTribe</a>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
@@ -938,7 +938,7 @@ article .content > div:last-child {
                         <i class='bx bx-user'></i>
                         <span>Profile</span>
                     </a>
-                    <a href="#logout" class="dropdown-item">
+                    <a href="logout.php" class="dropdown-item">
                         <i class='bx bx-log-out'></i>
                         <span>Logout</span>
                     </a>
@@ -956,11 +956,11 @@ article .content > div:last-child {
                 Together, We Build a Better Tomorrow.
             </p>
             <p class="text-blk heading">
-            MITVOL is more than a platform — it’s a movement built on compassion and community.
+            
             We connect passionate volunteers with meaningful causes, empowering ordinary people to make extraordinary impact.        
         </p>
-            <form class="form-blk bg-[#003153]">
-                <a class="text-blk button bg-[#003153]">
+            <form class="form-blk " >
+                <a class="text-blk button" href="event.php" >
                 Explore Our Events
                 </a>
             </form>
@@ -1023,7 +1023,7 @@ article .content > div:last-child {
 
                     <div class="about-buttons">
                         <button class="btn-primary">Know More →</button>
-                        <button class="btn-secondary">Events</button>
+                        <button class="btn-secondary" onclick="window.location.href='event.php';">Events</button>
                     </div>
                 </div>
 
@@ -1042,69 +1042,82 @@ article .content > div:last-child {
     </section>
 
 
-    <section class="about-section">
-    <div class="containerx" id="infiniteScroll--left">
-        <article>
-            <div class="wrapper">
-            <div class="img">1</div>
-            <div class="content">
-                <div></div>
-                <div></div>
-            </div>
-            </div>
-        </article>
-        
-        <!-- Make as many articles as you need -->
-        <article>
-            <div class="wrapper">
-            <div class="img">2</div>
-            <div class="content">
-                <div></div>
-                <div></div>
-            </div>
-            </div>
-        </article>
-        <article>
-            <div class="wrapper">
-            <div class="img">3</div>
-            <div class="content">
-                <div></div>
-                <div></div>
-            </div>
-            </div>
-        </article>
-        <article>
-            <div class="wrapper">
-            <div class="img">4</div>
-            <div class="content">
-                <div></div>
-                <div></div>
-            </div>
-            </div>
-        </article>
-        <article>
-            <div class="wrapper">
-            <div class="img">5</div>
-            <div class="content">
-                <div></div>
-                <div></div>
-            </div>
-            </div>
-        </article>
-        <article>
-            <div class="wrapper">
-            <div class="img">
-                6
-            </div>
-            <div class="content">
-                <div></div>
-                <div></div>
-            </div>
-            </div>
-        </article>
-    
-    </div>
-    </section>
+    <section class="about-section py-10 bg-gray-50">
+  <div class="containerx flex gap-6 overflow-x-auto px-6" id="infiniteScroll--left">
+
+    <article class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+      <div class="wrapper">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=800&q=80"
+               alt="Beach Cleanup Drive"
+               class="w-full h-48 object-cover">
+        </div>
+        <div class="content p-4">
+          <h3 class="text-lg font-semibold text-gray-800 mb-1">Beach Cleanup Drive</h3>
+          <p class="text-sm text-gray-600">Volunteers gathered to clean 5 km of coastline and promote ocean awareness.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+      <div class="wrapper">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80"
+               alt="Tree Plantation Campaign"
+               class="w-full h-48 object-cover">
+        </div>
+        <div class="content p-4">
+          <h3 class="text-lg font-semibold text-gray-800 mb-1">Tree Plantation Campaign</h3>
+          <p class="text-sm text-gray-600">Over 300 saplings were planted around the community park.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+      <div class="wrapper">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80"
+               alt="Blood Donation Camp"
+               class="w-full h-48 object-cover">
+        </div>
+        <div class="content p-4">
+          <h3 class="text-lg font-semibold text-gray-800 mb-1">Blood Donation Camp</h3>
+          <p class="text-sm text-gray-600">Organized at MIT Campus with 120+ donors supporting healthcare.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+      <div class="wrapper">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=800&q=80"
+               alt="Rural Education Program"
+               class="w-full h-48 object-cover">
+        </div>
+        <div class="content p-4">
+          <h3 class="text-lg font-semibold text-gray-800 mb-1">Rural Education Program</h3>
+          <p class="text-sm text-gray-600">Volunteers taught children basic math and computer literacy.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+      <div class="wrapper">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1593113598332-cd691e6f1dcb?auto=format&fit=crop&w=800&q=80"
+               alt="Food Donation Drive"
+               class="w-full h-48 object-cover">
+        </div>
+        <div class="content p-4">
+          <h3 class="text-lg font-semibold text-gray-800 mb-1">Food Donation Drive</h3>
+          <p class="text-sm text-gray-600">Over 500 meal packs distributed to low-income families.</p>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
 
 
     <!-- Footer -->
@@ -1114,15 +1127,15 @@ article .content > div:last-child {
                 <div class="footer__info">
                     <div class="footer__logo">
                         <i class='bx bx-grid-alt'></i>
-                        <span>MITVOL</span>
+                        <span>VolunTribe</span>
                     </div>
 
                     <p class="footer__description">
-                        MITVOL is a platform that connects volunteers and organizations to make meaningful social impact together. 
+                        VolunTribe is a platform that connects volunteers and organizations to make meaningful social impact together. 
                     </p>
 
                     <p class="footer__description">
-                        Join hands with MITVOL to build communities, empower change, and create a better tomorrow through volunteering.
+                        Join hands with VolunTribe to build communities, empower change, and create a better tomorrow through volunteering.
                     </p>
 
                 </div>
@@ -1157,7 +1170,7 @@ article .content > div:last-child {
             </div>
 
             <div class="footer__bottom">
-                <p class="footer__copyright">© Copyright 2025 MITVOL. All rights reserved.</p>
+                <p class="footer__copyright">© Copyright 2025 VolunTribe. All rights reserved.</p>
                 <div class="footer__social">
                     <a href="#" class="footer__social-link"><i class='bx bxl-twitter'></i></a>
                     <a href="#" class="footer__social-link"><i class='bx bxl-instagram'></i></a>
@@ -1254,6 +1267,7 @@ article .content > div:last-child {
             },
             {
                 title: "Five",
+       
                 subtitle: "Australia",
                 description: "A piece of heaven",
                 image: "https://images.unsplash.com/photo-1579130781921-76e18892b57b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"

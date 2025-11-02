@@ -9,6 +9,8 @@ body {
     Ubuntu, Cantarell, sans-serif;
   background: #003153;
   min-height: 100vh;
+  min-width: 390px;
+  overflow-x: auto; 
   padding-top: 80px;
 }
 
@@ -624,6 +626,9 @@ body {
 
 .footer__logo i {
   font-size: 2rem;
+
+/* Utility fallback: support Tailwind-like arbitrary bg color on pages without Tailwind loaded */
+.bg-\[\#6df108\] { background-color: #6df108 !important; }
   color: #003153;
 }
 

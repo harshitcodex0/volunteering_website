@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MITVOLS - Events</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header class="header" id="header">
@@ -70,7 +70,7 @@ if (!isset($_SESSION['user_id'])) {
                         <i class='bx bx-user'></i>
                         <span>Profile</span>
                     </a>
-                    <a href="#logout" class="dropdown-item">
+                    <a href="logout.php" class="dropdown-item">
                         <i class='bx bx-log-out'></i>
                         <span>Logout</span>
                     </a>
@@ -145,6 +145,6 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </footer>
 
-    <script src ="js\script.js"></script>
+    <script src ="js/script.js"></script>
 </body>
 </html>
