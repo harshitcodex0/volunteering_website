@@ -25,18 +25,18 @@ if (!isset($_SESSION['user_id'])) {
 <body class="bg-white text-gray-800">
 
   <!-- Header -->
-  <header class="header shadow-md bg-white fixed top-0 w-full z-50">
-    <nav class="nav container"> 
+  <header class="header" id="header">
+        <nav class="nav container"> 
             <div class="nav__toggle" id="nav-toggle">
                 <i class='bx bx-menu'></i>
             </div>
 
-            <a href="index.php" class="nav__logo">VolunTribe</a>
+            <a href="index.php" class="nav__logo">MITVOLS</a>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="index.php" class="nav__link ">
+                        <a href="index.php" class="nav__link active-link">
                             <i class='bx bx-home-alt nav__icon'></i>
                             <span class="nav__name">Home</span>
                         </a>
@@ -57,7 +57,7 @@ if (!isset($_SESSION['user_id'])) {
                     </li>
 
                     <li class="nav__item">
-                        <a href="gallery.php" class="nav__link  active-link">
+                        <a href="gallery.php" class="nav__link">
                             <i class='bx bx-briefcase-alt nav__icon'></i>
                             <span class="nav__name">Gallery</span>
                         </a>
@@ -80,14 +80,14 @@ if (!isset($_SESSION['user_id'])) {
                         <i class='bx bx-user'></i>
                         <span>Profile</span>
                     </a>
-          <a href="logout.php" class="dropdown-item">
+                    <a href="#logout" class="dropdown-item">
                         <i class='bx bx-log-out'></i>
                         <span>Logout</span>
                     </a>
                 </div>
             </div>
         </nav>
-  </header>
+    </header>
 
   <!-- Gallery Section -->
   <main class="pt-8 pb-16 container mx-auto px-6">

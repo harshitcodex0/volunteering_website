@@ -26,12 +26,12 @@
                 <i class='bx bx-menu'></i>
             </div>
 
-            <a href="index.php" class="nav__logo">MITVOLS</a>
+            <a href="index.php" class="nav__logo">VolunTribe</a>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="index.php" class="nav__link active-link">
+                        <a href="index.php" class="nav__link">
                             <i class='bx bx-home-alt nav__icon'></i>
                             <span class="nav__name">Home</span>
                         </a>
@@ -45,7 +45,7 @@
                     </li>
 
                     <li class="nav__item">
-                        <a href="event.php" class="nav__link">
+                        <a href="event.php" class="nav__link  active-link">
                             <i class='bx bx-book-alt nav__icon'></i>
                             <span class="nav__name">Events</span>
                         </a>
@@ -86,9 +86,10 @@
 
     <div class="card-list">
         <a href="#" class="card-item">
-            <img src="https://images.pexels.com/photos/922511/pexels-photo-922511.jpeg" alt="Card Image">
-            <span class="developer">Developer</span>
-            <h3>A "developer" codes software and websites.</h3>
+            <img src="https://lbb.in/mumbai/dadar-beach-cleanup-dbc7ba/" alt="Card Image">
+            
+            <h3>Beach Cleanup Drive – Coastal Conservation</h3>
+            <p>Join hands to clear 3 km of coastline, raise awareness about plastic waste and help restore natural habitat.</p>
             <div class="arrow">
                 <i class="fas fa-arrow-right card-icon"></i>
             </div>
