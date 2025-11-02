@@ -1,18 +1,23 @@
 <?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-  header("Location: login.php");
-  exit;
-}
+// session_start();
+// if (!isset($_SESSION['user_id'])) {
+//   header("Location: login.php");
+//   exit;
+// }    
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MITVOLS - Events</title>
+    <title>Navigation with Profile Dropdown</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css\about.css">
+    <link rel="stylesheet" href="css\event.css">
+    <!-- <link rel="stylesheet" href="css\style.css"> -->
+    <style>
+
+    </style>
 </head>
 <body>
     <header class="header" id="header">
@@ -26,7 +31,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="index.php" class="nav__link">
+                        <a href="index.php" class="nav__link active-link">
                             <i class='bx bx-home-alt nav__icon'></i>
                             <span class="nav__name">Home</span>
                         </a>
@@ -40,7 +45,7 @@ if (!isset($_SESSION['user_id'])) {
                     </li>
 
                     <li class="nav__item">
-                        <a href="event.php" class="nav__link active-link">
+                        <a href="event.php" class="nav__link">
                             <i class='bx bx-book-alt nav__icon'></i>
                             <span class="nav__name">Events</span>
                         </a>
@@ -79,10 +84,81 @@ if (!isset($_SESSION['user_id'])) {
         </nav>
     </header>
 
-    <div class="demo-content">
-        <h1>Navigation with Profile Dropdown</h1>
-        <p>Click on the profile picture to see the dropdown menu!</p>
-        <p style="margin-top: 1rem; font-size: 1rem;">📱 Resize your browser to see the hamburger menu in action</p>
+    <div class="card-list">
+        <a href="#" class="card-item">
+            <img src="images/developer.jpg" alt="Card Image">
+            <span class="developer">Developer</span>
+            <h3>A "developer" codes software and websites.</h3>
+            <div class="arrow">
+                <i class="fas fa-arrow-right card-icon"></i>
+            </div>
+        </a>
+        <a href="#" class="card-item">
+            <img src="images/designer.jpg" alt="Card Image">
+            <span class="designer">Designer</span>
+            <h3>A "designer" is a design expert.</h3>
+            <div class="arrow">
+                <i class="fas fa-arrow-right card-icon"></i>
+            </div>
+        </a>
+        <a href="#" class="card-item">
+            <img src="images/editor.jpg" alt="Card Image">
+            <span class="editor">Editor</span>
+            <h3>An "editor" ensures content quality and accuracy.</h3>
+            <div class="arrow">
+                <i class="fas fa-arrow-right card-icon"></i>
+            </div>
+        </a>
+
+        <a href="#" class="card-item">
+            <img src="images/developer.jpg" alt="Card Image">
+            <span class="developer">Developer</span>
+            <h3>A "developer" codes software and websites.</h3>
+            <div class="arrow">
+                <i class="fas fa-arrow-right card-icon"></i>
+            </div>
+        </a>
+        <a href="#" class="card-item">
+            <img src="images/designer.jpg" alt="Card Image">
+            <span class="designer">Designer</span>
+            <h3>A "designer" is a design expert.</h3>
+            <div class="arrow">
+                <i class="fas fa-arrow-right card-icon"></i>
+            </div>
+        </a>
+        <a href="#" class="card-item">
+            <img src="images/editor.jpg" alt="Card Image">
+            <span class="editor">Editor</span>
+            <h3>An "editor" ensures content quality and accuracy.</h3>
+            <div class="arrow">
+                <i class="fas fa-arrow-right card-icon"></i>
+            </div>
+        </a>
+
+        <a href="#" class="card-item">
+            <img src="images/developer.jpg" alt="Card Image">
+            <span class="developer">Developer</span>
+            <h3>A "developer" codes software and websites.</h3>
+            <div class="arrow">
+                <i class="fas fa-arrow-right card-icon"></i>
+            </div>
+        </a>
+        <a href="#" class="card-item">
+            <img src="images/designer.jpg" alt="Card Image">
+            <span class="designer">Designer</span>
+            <h3>A "designer" is a design expert.</h3>
+            <div class="arrow">
+                <i class="fas fa-arrow-right card-icon"></i>
+            </div>
+        </a>
+        <a href="#" class="card-item">
+            <img src="images/editor.jpg" alt="Card Image">
+            <span class="editor">Editor</span>
+            <h3>An "editor" ensures content quality and accuracy.</h3>
+            <div class="arrow">
+                <i class="fas fa-arrow-right card-icon"></i>
+            </div>
+        </a>
     </div>
 
     <!-- Footer -->
@@ -146,5 +222,61 @@ if (!isset($_SESSION['user_id'])) {
     </footer>
 
     <script src ="js\script.js"></script>
+    <script>
+        // Hamburger Menu Toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show-menu');
+            // Change icon
+            const icon = navToggle.querySelector('i');
+            if (navMenu.classList.contains('show-menu')) {
+                icon.classList.remove('bx-menu');
+                icon.classList.add('bx-x');
+            } else {
+                icon.classList.remove('bx-x');
+                icon.classList.add('bx-menu');
+            }
+        });
+
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav__link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show-menu');
+                const icon = navToggle.querySelector('i');
+                icon.classList.remove('bx-x');
+                icon.classList.add('bx-menu');
+                
+                // Update active link
+                navLinks.forEach(l => l.classList.remove('active-link'));
+                link.classList.add('active-link');
+            });
+        });
+
+        // Profile Dropdown Toggle
+        const profileToggle = document.getElementById('profile-toggle');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+
+        profileToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+
+        // Close dropdown when clicking a menu item
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', () => {
+                dropdownMenu.classList.remove('show');
+            });
+        });
+    </script>
 </body>
 </html>
