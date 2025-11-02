@@ -86,7 +86,7 @@
 
     <div class="card-list">
         <a href="#" class="card-item">
-            <img src="https://lbb.in/mumbai/dadar-beach-cleanup-dbc7ba/" alt="Card Image">
+            <img src="./src/images/ev1.jpg" alt="Card Image">
             
             <h3>Beach Cleanup Drive – Coastal Conservation</h3>
             <p>Join hands to clear 3 km of coastline, raise awareness about plastic waste and help restore natural habitat.</p>
@@ -95,67 +95,69 @@
             </div>
         </a>
         <a href="#" class="card-item">
-            <img src="https://images.pexels.com/photos/922511/pexels-photo-922511.jpeg" alt="Card Image">
-            <span class="designer">Designer</span>
-            <h3>A "designer" is a design expert.</h3>
+            <img src="./src/images/ev2.jpg" alt="Card Image">
+            
+            <h3>Tree Plantation Campaign – Green Our Neighbourhood</h3>
+            <p>Help plant 300+ young trees in the city-edge park, contributing to cleaner air and greener spaces for all.</p>
             <div class="arrow">
                 <i class="fas fa-arrow-right card-icon"></i>
             </div>
         </a>
         <a href="#" class="card-item">
-            <img src="https://images.pexels.com/photos/922511/pexels-photo-922511.jpeg" alt="Card Image">
-            <span class="editor">Editor</span>
-            <h3>An "editor" ensures content quality and accuracy.</h3>
-            <div class="arrow">
-                <i class="fas fa-arrow-right card-icon"></i>
-            </div>
-        </a>
-
-        <a href="#" class="card-item">
-            <img src="https://images.pexels.com/photos/922511/pexels-photo-922511.jpeg" alt="Card Image">
-            <span class="developer">Developer</span>
-            <h3>A "developer" codes software and websites.</h3>
-            <div class="arrow">
-                <i class="fas fa-arrow-right card-icon"></i>
-            </div>
-        </a>
-        <a href="#" class="card-item">
-            <img src="https://images.pexels.com/photos/922511/pexels-photo-922511.jpeg" alt="Card Image">
-            <span class="designer">Designer</span>
-            <h3>A "designer" is a design expert.</h3>
-            <div class="arrow">
-                <i class="fas fa-arrow-right card-icon"></i>
-            </div>
-        </a>
-        <a href="#" class="card-item">
-            <img src="https://images.pexels.com/photos/922511/pexels-photo-922511.jpeg" alt="Card Image">
-            <span class="editor">Editor</span>
-            <h3>An "editor" ensures content quality and accuracy.</h3>
+            <img src="./src/images/ev3.jpg" alt="Card Image">
+        
+            <h3>Blood Donation Camp – Life Gives Life</h3>
+            <p>Support our campaign to collect 150+ units of blood; your time can save multiple lives today.</p>
             <div class="arrow">
                 <i class="fas fa-arrow-right card-icon"></i>
             </div>
         </a>
 
         <a href="#" class="card-item">
-            <img src="https://images.pexels.com/photos/922511/pexels-photo-922511.jpeg" alt="Card Image">
+            <img src="./src/images/ev4.jpg" alt="Card Image">
             <span class="developer">Developer</span>
-            <h3>A "developer" codes software and websites.</h3>
+            <h3>Rural Education Outreach – Teach & Empower</h3>
             <div class="arrow">
                 <i class="fas fa-arrow-right card-icon"></i>
             </div>
         </a>
         <a href="#" class="card-item">
-            <img src="https://images.pexels.com/photos/922511/pexels-photo-922511.jpeg" alt="Card Image">
+            <img src="./src/images/ev5.jpg" alt="Card Image">
             <span class="designer">Designer</span>
-            <h3>A "designer" is a design expert.</h3>
+            <h3>Food Donation Drive – Share a Meal</h3>
             <div class="arrow">
                 <i class="fas fa-arrow-right card-icon"></i>
             </div>
         </a>
         <a href="#" class="card-item">
-            <img src="https://images.pexels.com/photos/922511/pexels-photo-922511.jpeg" alt="Card Image">
+            <img src="./src/images/ev6.jpg" alt="Card Image">
             <span class="editor">Editor</span>
-            <h3>An "editor" ensures content quality and accuracy.</h3>
+            <h3>Virtual Mentoring Session – Online Volunteers</h3>
+            <div class="arrow">
+                <i class="fas fa-arrow-right card-icon"></i>
+            </div>
+        </a>
+
+        <a href="#" class="card-item">
+            <img src="./src/images/ev7.jpg" alt="Card Image">
+            
+            <h3>Community Garden Revitalization</h3>
+            <div class="arrow">
+                <i class="fas fa-arrow-right card-icon"></i>
+            </div>
+        </a>
+        <a href="#" class="card-item">
+            <img src="./src/images/ev8.jpg" alt="Card Image">
+            
+            <h3>School Renovation Drive</h3>
+            <div class="arrow">
+                <i class="fas fa-arrow-right card-icon"></i>
+            </div>
+        </a>
+        <a href="#" class="card-item">
+            <img src="./src/images/ev9.jpg" alt="Card Image">
+            
+            <h3>Elderly Care Visit – “Moments of Joy”</h3>
             <div class="arrow">
                 <i class="fas fa-arrow-right card-icon"></i>
             </div>
