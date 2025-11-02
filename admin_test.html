@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Module - Volunteering Website</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+  }
+  header {
+    background-color: #0077cc;
+    color: white;
+    text-align: center;
+    padding: 15px;
+  }
+  nav {
+    background-color: #333;
+    overflow: hidden;
+  }
+  nav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  nav a:hover {
+    background-color: #575757;
+  }
+  .container {
+    padding: 20px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  th {
+    background-color: #0077cc;
+    color: white;
+  }
+  button {
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  button:hover {
+    background-color: #005fa3;
+  }
+  @media (max-width: 600px) {
+    nav a {
+      float: none;
+      width: 100%;
+    }
+    table, th, td {
+      font-size: 14px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Admin Dashboard - Volunteering Website</h1>
+</header>
+
+<nav>
+  <a href="#" onclick="showSection('users')">Manage Users</a>
+  <a href="#" onclick="showSection('organizations')">Manage Organizations</a>
+  <a href="#" onclick="showSection('approvals')">Approvals</a>
+  <a href="#" onclick="showSection('reports')">Reports</a>
+</nav>
+
+<div class="container">
+
+  <section id="users">
+    <h2>Manage Users</h2>
+    <table>
+      <tr><th>Name</th><th>Email</th><th>Status</th><th>Action</th></tr>
+      <tr><td>Riya Sharma</td><td>riya@example.com</td><td>Active</td><td><button onclick="toggleStatus(this)">Deactivate</button></td></tr>
+      <tr><td>Amit Patel</td><td>amit@example.com</td><td>Inactive</td><td><button onclick="toggleStatus(this)">Activate</button></td></tr>
+    </table>
+  </section>
+
+  <section id="organizations" style="display:none;">
+    <h2>Manage Organizations</h2>
+    <table>
+      <tr><th>Organization</th><th>Email</th><th>Status</th><th>Action</th></tr>
+      <tr><td>Helping Hands</td><td>help@hh.org</td><td>Approved</td><td><button onclick="editOrg(this)">Edit</button></td></tr>
+      <tr><td>FoodForAll</td><td>contact@ffa.org</td><td>Pending</td><td><button onclick="approveOrg(this)">Approve</button></td></tr>
+    </table>
+  </section>
+
+  <section id="approvals" style="display:none;">
+    <h2>Pending Approvals</h2>
+    <p>No pending requests right now.</p>
+  </section>
+
+  <section id="reports" style="display:none;">
+    <h2>Reports</h2>
+    <p>Total Users: <span id="userCount">2</span></p>
+    <p>Total Organizations: <span id="orgCount">2</span></p>
+  </section>
+
+</div>
+
+<script>
+  function showSection(sectionId) {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(sec => sec.style.display = 'none');
+    document.getElementById(sectionId).style.display = 'block';
+  }
+
+  function toggleStatus(btn) {
+    let row = btn.parentNode.parentNode;
+    let statusCell = row.cells[2];
+    if (statusCell.textContent === 'Active') {
+      statusCell.textContent = 'Inactive';
+      btn.textContent = 'Activate';
+    } else {
+      statusCell.textContent = 'Active';
+      btn.textContent = 'Deactivate';
+    }
+  }
+
+  function approveOrg(btn) {
+    let row = btn.parentNode.parentNode;
+    row.cells[2].textContent = 'Approved';
+    btn.remove();
+    alert('Organization approved!');
+  }
+
+  function editOrg(btn) {
+    let orgName = btn.parentNode.parentNode.cells[0].textContent;
+    let newName = prompt('Edit organization name:', orgName);
+    if (newName) {
+      btn.parentNode.parentNode.cells[0].textContent = newName;
+      alert('Organization name updated!');
+    }
+  }
+</script>
+
+</body>
+</html>

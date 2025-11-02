@@ -124,6 +124,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <h3 class="stat-number">4,200+</h3>
                                 <p class="stat-label">Curated volunteering projects</p>
                             </div>
+                            
                         </div>
 
                         <div class="stat-card">

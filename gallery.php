@@ -8,85 +8,111 @@ if (!isset($_SESSION['user_id'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MITVOLS - Gallery</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="css\style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MITVOL - Gallery</title>
+
+  <!-- Boxicons -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <header class="header" id="header">
-        <nav class="nav container"> 
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
-            </div>
 
-            <a href="index.php" class="nav__logo">MITVOLS</a>
+<body class="bg-white text-gray-800">
 
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item">
-                        <a href="index.php" class="nav__link">
-                            <i class='bx bx-home-alt nav__icon'></i>
-                            <span class="nav__name">Home</span>
-                        </a>
-                    </li>
-                    
-                    <li class="nav__item">
-                        <a href="about.php" class="nav__link">
-                            <i class='bx bx-user nav__icon'></i>
-                            <span class="nav__name">About</span>
-                        </a>
-                    </li>
+  <!-- Header -->
+  <header class="header shadow-md bg-white fixed top-0 w-full z-50">
+    <nav class="nav container mx-auto flex justify-between items-center px-6 py-4">
+      <div class="nav__toggle block md:hidden text-2xl text-blue-600" id="nav-toggle">
+        <i class='bx bx-menu'></i>
+      </div>
 
-                    <li class="nav__item">
-                        <a href="event.php" class="nav__link">
-                            <i class='bx bx-book-alt nav__icon'></i>
-                            <span class="nav__name">Events</span>
-                        </a>
-                    </li>
+      <a href="index.php" class="nav__logo text-2xl font-bold text-blue-700">MITVOL</a>
 
-                    <li class="nav__item">
-                        <a href="gallery.php" class="nav__link active-link">
-                            <i class='bx bx-briefcase-alt nav__icon'></i>
-                            <span class="nav__name">Gallery</span>
-                        </a>
-                    </li>
+      <div class="nav__menu hidden md:flex space-x-6" id="nav-menu">
+        <a href="index.php" class="nav__link text-gray-700 hover:text-blue-600">Home</a>
+        <a href="about.php" class="nav__link text-gray-700 hover:text-blue-600">About</a>
+        <a href="event.php" class="nav__link text-gray-700 hover:text-blue-600">Events</a>
+        <a href="gallery.php" class="nav__link text-blue-600 font-semibold border-b-2 border-blue-600">Gallery</a>
+        <a href="contact.php" class="nav__link text-gray-700 hover:text-blue-600">Contact</a>
+      </div>
 
-                    <li class="nav__item">
-                        <a href="contact.php" class="nav__link">
-                            <i class='bx bx-message-square-detail nav__icon'></i>
-                            <span class="nav__name">Contact Us</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+      <!-- Profile Dropdown -->
+      <div class="profile-dropdown relative">
+        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop"
+             alt="Profile"
+             class="nav__img w-10 h-10 rounded-full border-2 border-blue-600 cursor-pointer object-cover"
+             id="profile-toggle">
+        <div class="dropdown-menu absolute right-0 mt-3 w-48 bg-white rounded-lg shadow-lg hidden" id="dropdown-menu">
+          <a href="#profile" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100">
+            <i class='bx bx-user text-blue-600'></i> <span>Profile</span>
+          </a>
+          <a href="logout.php" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100">
+            <i class='bx bx-log-out text-blue-600'></i> <span>Logout</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-            <!-- Profile Dropdown -->
-            <div class="profile-dropdown">
-                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Profile" class="nav__img" id="profile-toggle">
-                <div class="dropdown-menu" id="dropdown-menu">
-                    <a href="#profile" class="dropdown-item">
-                        <i class='bx bx-user'></i>
-                        <span>Profile</span>
-                    </a>
-                    <a href="#logout" class="dropdown-item">
-                        <i class='bx bx-log-out'></i>
-                        <span>Logout</span>
-                    </a>
-                </div>
-            </div>
-        </nav>
-    </header>
+  <!-- Gallery Section -->
+  <main class="pt-28 pb-16 container mx-auto px-6">
+    <h1 class="text-3xl font-bold text-center text-blue-700 mb-10">MITVOL Gallery</h1>
 
-    <div class="demo-content">
-        <h1>Navigation with Profile Dropdown</h1>
-        <p>Click on the profile picture to see the dropdown menu!</p>
-        <p style="margin-top: 1rem; font-size: 1rem;">📱 Resize your browser to see the hamburger menu in action</p>
+    <!-- Responsive Image Grid -->
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+      <div>
+        <img class="object-cover object-center w-full h-52 rounded-lg"
+          src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?auto=format&fit=crop&w=1470&q=80"
+          alt="gallery-photo" />
+      </div>
+      <div>
+        <img class="object-cover object-center w-full h-52 rounded-lg"
+          src="https://images.unsplash.com/photo-1432462770865-65b70566d673?auto=format&fit=crop&w=1950&q=80"
+          alt="gallery-photo" />
+      </div>
+      <div>
+        <img class="object-cover object-center w-full h-52 rounded-lg"
+          src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?auto=format&fit=crop&w=2560&q=80"
+          alt="gallery-photo" />
+      </div>
+      <div>
+        <img class="object-cover object-center w-full h-52 rounded-lg"
+          src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=2940&q=80"
+          alt="gallery-photo" />
+      </div>
+      <div>
+        <img class="object-cover object-center w-full h-52 rounded-lg"
+          src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?auto=format&fit=crop&w=2762&q=80"
+          alt="gallery-photo" />
+      </div>
+      <div>
+        <img class="object-cover object-center w-full h-52 rounded-lg"
+          src="https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?auto=format&fit=crop&w=2832&q=80"
+          alt="gallery-photo" />
+      </div>
+      <div>
+        <img class="object-cover object-center w-full h-52 rounded-lg"
+          src="https://demos.creative-tim.com/material-kit-pro/assets/img/examples/blog5.jpg" alt="gallery-photo" />
+      </div>
+      <div>
+        <img class="object-cover object-center w-full h-52 rounded-lg"
+          src="https://material-taillwind-pro-ct-tailwind-team.vercel.app/img/content2.jpg" alt="gallery-photo" />
+      </div>
+      <div>
+        <img class="object-cover object-center w-full h-52 rounded-lg"
+          src="https://images.unsplash.com/photo-1620064916958-605375619af8?auto=format&fit=crop&w=1493&q=80"
+          alt="gallery-photo" />
+      </div>
     </div>
+  </main>
 
-    <!-- Footer -->
-    <footer class="footer">
+  <!-- Footer -->
+  <footer class="footer">
         <div class="footer__container container">
             <div class="footer__content">
                 <div class="footer__info">
@@ -145,6 +171,20 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </footer>
 
-    <script src ="js\script.js"></script>
+  <!-- JS -->
+  <script>
+    // Profile Dropdown Toggle
+    const profileToggle = document.getElementById('profile-toggle');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    profileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdownMenu.classList.toggle('hidden');
+    });
+    document.addEventListener('click', (e) => {
+      if (!profileToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.classList.add('hidden');
+      }
+    });
+  </script>
 </body>
 </html>
