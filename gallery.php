@@ -1,9 +1,9 @@
 <?php
-session_start();
-if (!isset($_SESSION['user_id'])) {
-  header("Location: login.php");
-  exit;
-}
+// session_start();
+// if (!isset($_SESSION['user_id'])) {
+//   header("Location: login.php");
+//   exit;
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,8 +15,87 @@ if (!isset($_SESSION['user_id'])) {
   <!-- Boxicons -->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+
+    /* Gallery Section Styles */
+
+/* Main Container */
+.gallery-main {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* Gallery Title */
+.gallery-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #ffffffff;
+}
+
+/* Gallery Grid Container */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+/* Gallery Item */
+.gallery-item {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+/* Gallery Image */
+.gallery-img {
+    width: 100%;
+    height: 13rem;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-img {
+    transform: scale(1.05);
+}
+
+/* Tablet - 2 Columns */
+@media (min-width: 640px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop - 3 Columns */
+@media (min-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .gallery-title {
+        font-size: 2.25rem;
+    }
+}
+
+/* Large Desktop */
+@media (min-width: 1024px) {
+    .gallery-main {
+        padding-top: 3rem;
+        padding-bottom: 5rem;
+    }
+    
+    .gallery-img {
+        height: 14rem;
+    }
+}
+  </style>
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css">
@@ -90,56 +169,40 @@ if (!isset($_SESSION['user_id'])) {
     </header>
 
   <!-- Gallery Section -->
-  <main class="pt-8 pb-16 container mx-auto px-6">
-    <h1 class="text-3xl font-bold text-center mb-10 text-[#003153]">VolunTribe Gallery</h1>
+  <main class="gallery-main">
+    <h1 class="gallery-title">VolunTribe Gallery</h1>
 
     <!-- Responsive Image Grid -->
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-      <div>
-        <img class="object-cover object-center w-full h-52 rounded-lg"
-          src="./src/images/img1.jpg" alt="gallery-photo"
-          alt="gallery-photo" />
-      </div>
-      <div>
-        <img class="object-cover object-center w-full h-52 rounded-lg"
-          src="./src/images/img2.jpg"
-          alt="gallery-photo" />
-      </div>
-      <div>
-        <img class="object-cover object-center w-full h-52 rounded-lg"
-          src="./src/images/img3.jpg"
-          alt="gallery-photo" />
-      </div>
-      <div>
-        <img class="object-cover object-center w-full h-52 rounded-lg"
-          src="./src/images/img4.jpg"
-          alt="gallery-photo" />
-      </div>
-      <div>
-        <img class="object-cover object-center w-full h-52 rounded-lg"
-          src="./src/images/img5.jpg"
-          alt="gallery-photo" />
-      </div>
-      <div>
-        <img class="object-cover object-center w-full h-52 rounded-lg"
-          src="./src/images/img6.jpeg"
-          alt="gallery-photo" />
-      </div>
-      <div>
-        <img class="object-cover object-center w-full h-52 rounded-lg"
-          src="./src/images/img7.png" alt="gallery-photo" />
-      </div>
-      <div>
-        <img class="object-cover object-center w-full h-52 rounded-lg"
-          src="./src/images/img8.jpeg" alt="gallery-photo" />
-      </div>
-      <div>
-        <img class="object-cover object-center w-full h-52 rounded-lg"
-          src="./src/images/img9.png"
-          alt="gallery-photo" />
-      </div>
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img class="gallery-img" src="./src/images/img1.jpg" alt="gallery-photo" />
+        </div>
+        <div class="gallery-item">
+            <img class="gallery-img" src="./src/images/img2.jpg" alt="gallery-photo" />
+        </div>
+        <div class="gallery-item">
+            <img class="gallery-img" src="./src/images/img3.jpg" alt="gallery-photo" />
+        </div>
+        <div class="gallery-item">
+            <img class="gallery-img" src="./src/images/img4.jpg" alt="gallery-photo" />
+        </div>
+        <div class="gallery-item">
+            <img class="gallery-img" src="./src/images/img5.jpg" alt="gallery-photo" />
+        </div>
+        <div class="gallery-item">
+            <img class="gallery-img" src="./src/images/img6.jpeg" alt="gallery-photo" />
+        </div>
+        <div class="gallery-item">
+            <img class="gallery-img" src="./src/images/img7.png" alt="gallery-photo" />
+        </div>
+        <div class="gallery-item">
+            <img class="gallery-img" src="./src/images/img8.jpeg" alt="gallery-photo" />
+        </div>
+        <div class="gallery-item">
+            <img class="gallery-img" src="./src/images/img9.png" alt="gallery-photo" />
+        </div>
     </div>
-  </main>
+</main>
 
   <!-- Footer -->
   <footer class="footer">
@@ -203,5 +266,61 @@ if (!isset($_SESSION['user_id'])) {
 
   <!-- JS -->
   <script src="js/script.js"></script>
+  <script>
+    // Hamburger Menu Toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show-menu');
+            // Change icon
+            const icon = navToggle.querySelector('i');
+            if (navMenu.classList.contains('show-menu')) {
+                icon.classList.remove('bx-menu');
+                icon.classList.add('bx-x');
+            } else {
+                icon.classList.remove('bx-x');
+                icon.classList.add('bx-menu');
+            }
+        });
+
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav__link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show-menu');
+                const icon = navToggle.querySelector('i');
+                icon.classList.remove('bx-x');
+                icon.classList.add('bx-menu');
+                
+                // Update active link
+                navLinks.forEach(l => l.classList.remove('active-link'));
+                link.classList.add('active-link');
+            });
+        });
+
+        // Profile Dropdown Toggle
+        const profileToggle = document.getElementById('profile-toggle');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+
+        profileToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!profileToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+
+        // Close dropdown when clicking a menu item
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', () => {
+                dropdownMenu.classList.remove('show');
+            });
+        });
+    </script>
 </body>
 </html>
