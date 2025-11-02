@@ -26,9 +26,9 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, sans-serif;
-  background: #003153;
+  background: #ffffffff;
   min-height: 100vh;
-  padding-top: 80px;
+  padding-top: 70px;
 }
 
 .header {
