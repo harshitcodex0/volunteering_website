@@ -819,6 +819,67 @@ body {
     display: none;
   }
 }
+
+
+.containerx {
+  margin: auto;
+  max-width: 1440px;
+  overflow-x: scroll;
+  white-space: nowrap;
+  background-color: #fff;
+  display: flex;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scroll-disabler {
+  width: 100vw;
+  height: 450px;
+  position: absolute;
+  background-color: rgba(0,0,0 , 0.0001);
+}
+
+ ::-webkit-scrollbar {
+  display: none;
+}
+
+article {
+  min-width: 350px;
+  height: 400px;
+  padding: 1rem;
+}
+article .wrapper {
+  padding 1rem;
+  background-color: #fff;
+  height: 100%;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+}
+article .img {
+  height: 50%;
+  background-color: lightgray;
+  border-radius: 25px 25px 0 0;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+  /* optional */
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+article .content > div {
+  height: 2rem;
+  background-color: lightgray;
+  margin: 2rem auto 0 auto;
+  width: 85%;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+  border-radius: 5px;
+}
+article .content > div:last-child {
+  height: 5rem;
+}
     </style>
 </head>
 <body>
@@ -978,6 +1039,71 @@ body {
     <!-- Hero Carousel Section -->
     <section class="hero-carousel">
         <div id="carousel-app"></div>
+    </section>
+
+
+    <section class="about-section">
+    <div class="containerx" id="infiniteScroll--left">
+        <article>
+            <div class="wrapper">
+            <div class="img">1</div>
+            <div class="content">
+                <div></div>
+                <div></div>
+            </div>
+            </div>
+        </article>
+        
+        <!-- Make as many articles as you need -->
+        <article>
+            <div class="wrapper">
+            <div class="img">2</div>
+            <div class="content">
+                <div></div>
+                <div></div>
+            </div>
+            </div>
+        </article>
+        <article>
+            <div class="wrapper">
+            <div class="img">3</div>
+            <div class="content">
+                <div></div>
+                <div></div>
+            </div>
+            </div>
+        </article>
+        <article>
+            <div class="wrapper">
+            <div class="img">4</div>
+            <div class="content">
+                <div></div>
+                <div></div>
+            </div>
+            </div>
+        </article>
+        <article>
+            <div class="wrapper">
+            <div class="img">5</div>
+            <div class="content">
+                <div></div>
+                <div></div>
+            </div>
+            </div>
+        </article>
+        <article>
+            <div class="wrapper">
+            <div class="img">
+                6
+            </div>
+            <div class="content">
+                <div></div>
+                <div></div>
+            </div>
+            </div>
+        </article>
+    
+    </div>
     </section>
 
 
@@ -1252,6 +1378,51 @@ body {
 
         const carouselRoot = ReactDOM.createRoot(document.getElementById("carousel-app"));
         carouselRoot.render(React.createElement(CarouselApp));
+
+
+
+     const scrollContainers = document.querySelectorAll("#infiniteScroll--left");
+
+scrollContainers.forEach((container) => {
+  const scrollWidth = container.scrollWidth;
+  let isScrollingPaused = false;
+
+  window.addEventListener("load", () => {
+    self.setInterval(() => {
+      if (isScrollingPaused) {
+        return;
+      }
+      const first = container.querySelector("article");
+
+      if (!isElementInViewport(first)) {
+        container.appendChild(first);
+        container.scrollTo(container.scrollLeft - first.offsetWidth, 0);
+      }
+      if (container.scrollLeft !== scrollWidth) {
+        container.scrollTo(container.scrollLeft + 1, 0);
+      }
+    }, 15);
+  });
+
+  function isElementInViewport(el) {
+    var rect = el.getBoundingClientRect();
+    return rect.right > 0;
+  }
+
+  function pauseScrolling() {
+    isScrollingPaused = true;
+  }
+
+  function resumeScrolling() {
+    isScrollingPaused = false;
+  }
+  const allArticles = container.querySelectorAll("article");
+  for (let article of allArticles) {
+    article.addEventListener("mouseenter", pauseScrolling);
+    article.addEventListener("mouseleave", resumeScrolling);
+  }
+});
+
     </script>
 </body>
 </html>
