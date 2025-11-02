@@ -67,7 +67,7 @@ if (!isset($_SESSION['user_id'])) {
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
       <div>
         <img class="object-cover object-center w-full h-52 rounded-lg"
-          src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?auto=format&fit=crop&w=1470&q=80"
+          src="https://vkfoundation.org/index.php/volunteer/"
           alt="gallery-photo" />
       </div>
       <div>

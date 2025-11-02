@@ -85,13 +85,14 @@ if (!isset($_SESSION['user_id'])) {
             </div>
             <div class="responsive-container-block bg">
             <p class="text-blk title">
-                I'M A UI/UX DESIGNER
+                Together, We Build a Better Tomorrow.
             </p>
             <p class="text-blk heading">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget purus lectus viverra in semper nec pretium mus
-            </p>
-            <form class="form-blk">
-                <a class="text-blk button">
+            MITVOL is more than a platform — it’s a movement built on compassion and community.
+            We connect passionate volunteers with meaningful causes, empowering ordinary people to make extraordinary impact.        
+        </p>
+            <form class="form-blk bg-[#003153]">
+                <a class="text-blk button bg-[#003153]">
                 Explore Our Events
                 </a>
             </form>
