@@ -821,65 +821,165 @@ body {
 }
 
 
+/* Horizontal Scroll Container */
 .containerx {
-  margin: auto;
-  max-width: 1440px;
-  overflow-x: scroll;
-  white-space: nowrap;
-  background-color: #fff;
-  display: flex;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+    margin: auto;
+    max-width: 1440px;
+    overflow-x: scroll;
+    white-space: nowrap;
+    background-color: #fff;
+    display: flex;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
+/* Scroll Disabler Overlay */
 .scroll-disabler {
-  width: 100vw;
-  height: 450px;
-  position: absolute;
-  background-color: rgba(0,0,0 , 0.0001);
+    width: 100vw;
+    height: 450px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.0001);
 }
 
- ::-webkit-scrollbar {
-  display: none;
+/* Hide Scrollbar */
+.containerx::-webkit-scrollbar {
+    display: none;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Article Card */
 article {
-  min-width: 350px;
-  height: 400px;
-  padding: 1rem;
-}
-article .wrapper {
-  padding 1rem;
-  background-color: #fff;
-  height: 100%;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  border-radius: 25px;
-}
-article .img {
-  height: 50%;
-  background-color: lightgray;
-  border-radius: 25px 25px 0 0;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
-  /* optional */
-  display: flex;
-  justify-content: center;
-  align-items:center;
-  font-size: 3rem;
-  font-weight: bold;
-  color: #fff;
+    min-width: 350px;
+    height: 400px;
+    padding: 1rem;
 }
 
+/* Card Wrapper */
+article .wrapper {
+    padding: 1rem;
+    background-color: #fff;
+    height: 100%;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+/* Image Container */
+article .img {
+    height: 50%;
+    background-color: lightgray;
+    border-radius: 25px 25px 0 0;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Image Element */
+article .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Content Area - FIX TEXT OVERFLOW */
+article .content {
+    padding: 1rem 0.5rem;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow: hidden;
+}
+
+/* Title - Prevent Overflow */
+article .content h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.4;
+    /* Prevent text overflow */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+}
+
+/* Description - Prevent Overflow */
+article .content p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.5;
+    /* Prevent text overflow */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+}
+
+/* Content Divs (if using placeholder divs) */
 article .content > div {
-  height: 2rem;
-  background-color: lightgray;
-  margin: 2rem auto 0 auto;
-  width: 85%;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
-  border-radius: 5px;
+    height: 2rem;
+    background-color: lightgray;
+    margin: 2rem auto 0 auto;
+    width: 85%;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+    border-radius: 5px;
 }
+
 article .content > div:last-child {
-  height: 5rem;
+    height: 5rem;
 }
+
+/* Hover Effect */
+article:hover {
+    transform: translateY(-4px);
+    transition: transform 0.3s ease;
+}
+
+article .img img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    article {
+        min-width: 300px;
+        height: 380px;
+    }
+    
+    article .content h3 {
+        font-size: 1rem;
+    }
+    
+    article .content p {
+        font-size: 0.813rem;
+    }
+}
+
+@media (max-width: 480px) {
+    article {
+        min-width: 280px;
+        height: 360px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -1043,80 +1143,80 @@ article .content > div:last-child {
 
 
     <section class="about-section py-10 bg-gray-50">
-  <div class="containerx flex gap-6 overflow-x-auto px-6" id="infiniteScroll--left">
+        <div class="containerx flex gap-6 overflow-x-auto px-6" id="infiniteScroll--left">
 
-    <article class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
-      <div class="wrapper">
-        <div class="img">
-          <img src="https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=800&q=80"
-               alt="Beach Cleanup Drive"
-               class="w-full h-48 object-cover">
-        </div>
-        <div class="content p-4">
-          <h3 class="text-lg font-semibold text-gray-800 mb-1">Beach Cleanup Drive</h3>
-          <p class="text-sm text-gray-600">Volunteers gathered to clean 5 km of coastline and promote ocean awareness.</p>
-        </div>
-      </div>
-    </article>
+            <article class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+            <div class="wrapper">
+                <div class="img">
+                <img src="https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=800&q=80"
+                    alt="Beach Cleanup Drive"
+                    class="w-full h-48 object-cover">
+                </div>
+                <div class="content p-4">
+                <h3 class="text-lg font-semibold text-gray-800 mb-1">Beach Cleanup Drive</h3>
+                <p class="text-sm text-gray-600">Volunteers gathered to clean 5 km of coastline and promote ocean awareness.</p>
+                </div>
+            </div>
+            </article>
 
-    <article class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
-      <div class="wrapper">
-        <div class="img">
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80"
-               alt="Tree Plantation Campaign"
-               class="w-full h-48 object-cover">
-        </div>
-        <div class="content p-4">
-          <h3 class="text-lg font-semibold text-gray-800 mb-1">Tree Plantation Campaign</h3>
-          <p class="text-sm text-gray-600">Over 300 saplings were planted around the community park.</p>
-        </div>
-      </div>
-    </article>
+            <article class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+            <div class="wrapper">
+                <div class="img">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80"
+                    alt="Tree Plantation Campaign"
+                    class="w-full h-48 object-cover">
+                </div>
+                <div class="content p-4">
+                <h3 class="text-lg font-semibold text-gray-800 mb-1">Tree Plantation Campaign</h3>
+                <p class="text-sm text-gray-600">Over 300 saplings were planted around the community park.</p>
+                </div>
+            </div>
+            </article>
 
-    <article class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
-      <div class="wrapper">
-        <div class="img">
-          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80"
-               alt="Blood Donation Camp"
-               class="w-full h-48 object-cover">
-        </div>
-        <div class="content p-4">
-          <h3 class="text-lg font-semibold text-gray-800 mb-1">Blood Donation Camp</h3>
-          <p class="text-sm text-gray-600">Organized at MIT Campus with 120+ donors supporting healthcare.</p>
-        </div>
-      </div>
-    </article>
+            <article class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+            <div class="wrapper">
+                <div class="img">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80"
+                    alt="Blood Donation Camp"
+                    class="w-full h-48 object-cover">
+                </div>
+                <div class="content p-4">
+                <h3 class="text-lg font-semibold text-gray-800 mb-1">Blood Donation Camp</h3>
+                <p class="text-sm text-gray-600">Organized at MIT Campus with 120+ donors supporting healthcare.</p>
+                </div>
+            </div>
+            </article>
 
-    <article class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
-      <div class="wrapper">
-        <div class="img">
-          <img src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=800&q=80"
-               alt="Rural Education Program"
-               class="w-full h-48 object-cover">
-        </div>
-        <div class="content p-4">
-          <h3 class="text-lg font-semibold text-gray-800 mb-1">Rural Education Program</h3>
-          <p class="text-sm text-gray-600">Volunteers taught children basic math and computer literacy.</p>
-        </div>
-      </div>
-    </article>
+            <article class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+            <div class="wrapper">
+                <div class="img">
+                <img src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=800&q=80"
+                    alt="Rural Education Program"
+                    class="w-full h-48 object-cover">
+                </div>
+                <div class="content p-4">
+                <h3 class="text-lg font-semibold text-gray-800 mb-1">Rural Education Program</h3>
+                <p class="text-sm text-gray-600">Volunteers taught children basic math and computer literacy.</p>
+                </div>
+            </div>
+            </article>
 
-    <article class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
-      <div class="wrapper">
-        <div class="img">
-          <img src="https://images.unsplash.com/photo-1593113598332-cd691e6f1dcb?auto=format&fit=crop&w=800&q=80"
-               alt="Food Donation Drive"
-               class="w-full h-48 object-cover">
-        </div>
-        <div class="content p-4">
-          <h3 class="text-lg font-semibold text-gray-800 mb-1">Food Donation Drive</h3>
-          <p class="text-sm text-gray-600">Over 500 meal packs distributed to low-income families.</p>
-        </div>
-      </div>
-    </article>
+            <article class="flex-shrink-0 w-80 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+            <div class="wrapper">
+                <div class="img">
+                <img src="https://images.unsplash.com/photo-1593113598332-cd691e6f1dcb?auto=format&fit=crop&w=800&q=80"
+                    alt="Food Donation Drive"
+                    class="w-full h-48 object-cover">
+                </div>
+                <div class="content p-4">
+                <h3 class="text-lg font-semibold text-gray-800 mb-1">Food Donation Drive</h3>
+                <p class="text-sm text-gray-600">Over 500 meal packs distributed to low-income families.</p>
+                </div>
+            </div>
+            </article>
 
-  </div>
-</section>
+        </div>
+    </section>
 
 
 
