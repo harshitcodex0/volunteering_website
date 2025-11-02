@@ -35,7 +35,7 @@
     font-weight: 700;
     text-align: center;
     margin-bottom: 2.5rem;
-    color: #ffffffff;
+    color: #003153;
 }
 
 /* Gallery Grid Container */
