@@ -115,24 +115,27 @@
 
         <a href="#" class="card-item">
             <img src="./src/images/ev4.jpg" alt="Card Image">
-            <span class="developer">Developer</span>
+            
             <h3>Rural Education Outreach – Teach & Empower</h3>
+            <p>Empower children in underserved villages by teaching basic English and digital skills for a brighter future.</p>
             <div class="arrow">
                 <i class="fas fa-arrow-right card-icon"></i>
             </div>
         </a>
         <a href="#" class="card-item">
             <img src="./src/images/ev5.jpg" alt="Card Image">
-            <span class="designer">Designer</span>
+            
             <h3>Food Donation Drive – Share a Meal</h3>
+            <p>Distribute 500+ meal packs to families in need this festive season — you can brighten many lives in just one afternoon.</p>
             <div class="arrow">
                 <i class="fas fa-arrow-right card-icon"></i>
             </div>
         </a>
         <a href="#" class="card-item">
             <img src="./src/images/ev6.jpg" alt="Card Image">
-            <span class="editor">Editor</span>
+            
             <h3>Virtual Mentoring Session – Online Volunteers</h3>
+            <p>Join our virtual mentoring program: spend 1-2 hours with a student online and help shape their future from anywhere.</p>
             <div class="arrow">
                 <i class="fas fa-arrow-right card-icon"></i>
             </div>
@@ -142,6 +145,7 @@
             <img src="./src/images/ev7.jpg" alt="Card Image">
             
             <h3>Community Garden Revitalization</h3>
+            <p>Help greenify the city by creating eco-friendly gardens and providing free, fresh produce for underprivileged families.</p>
             <div class="arrow">
                 <i class="fas fa-arrow-right card-icon"></i>
             </div>
@@ -150,6 +154,7 @@
             <img src="./src/images/ev8.jpg" alt="Card Image">
             
             <h3>School Renovation Drive</h3>
+            <p>Bring color and comfort to classrooms—volunteer your time to improve education spaces for rural students.</p>
             <div class="arrow">
                 <i class="fas fa-arrow-right card-icon"></i>
             </div>
@@ -158,6 +163,7 @@
             <img src="./src/images/ev9.jpg" alt="Card Image">
             
             <h3>Elderly Care Visit – “Moments of Joy”</h3>
+            <p>Share your time and heart—bring smiles and companionship to our beloved elders.</p>
             <div class="arrow">
                 <i class="fas fa-arrow-right card-icon"></i>
             </div>
