@@ -485,7 +485,7 @@ if (!isset($_SESSION['user_id'])) {
                     </li>
 
                     <li class="nav__item">
-                        <a href="event.php" class="nav__link  active-link">
+                        <a href="event.php" class="nav__link">
                             <i class='bx bx-book-alt nav__icon'></i>
                             <span class="nav__name">Events</span>
                         </a>
@@ -535,7 +535,7 @@ if (!isset($_SESSION['user_id'])) {
 
     <div class="card-list">
         <div class="card-item">
-            <img src="./src/images/ev1.jpg" alt="Card Image">
+            <img src="./src/images/ev1.jpg" alt="Beach Cleanup Drive – Coastal Conservation">
             <h3>Beach Cleanup Drive – Coastal Conservation</h3>
             <p>Join hands to clear 3 km of coastline, raise awareness about plastic waste and help restore natural habitat.</p>
             <button class="join-btn" data-event="Beach Cleanup Drive">
@@ -545,7 +545,7 @@ if (!isset($_SESSION['user_id'])) {
         </div>
 
         <div class="card-item">
-            <img src="./src/images/ev2.jpg" alt="Card Image">
+            <img src="./src/images/ev2.jpg" alt="Tree Plantation Campaign – Green Our Neighbourhood">
             <h3>Tree Plantation Campaign – Green Our Neighbourhood</h3>
             <p>Help plant 300+ young trees in the city-edge park, contributing to cleaner air and greener spaces for all.</p>
             <button class="join-btn" data-event="Tree Plantation Campaign">
@@ -555,7 +555,7 @@ if (!isset($_SESSION['user_id'])) {
         </div>
 
         <div class="card-item">
-            <img src="./src/images/ev3.jpg" alt="Card Image">
+            <img src="./src/images/ev3.jpg" alt="Blood Donation Camp – Life Gives Life">
             <h3>Blood Donation Camp – Life Gives Life</h3>
             <p>Support our campaign to collect 150+ units of blood; your time can save multiple lives today.</p>
             <button class="join-btn" data-event="Blood Donation Camp">
@@ -565,7 +565,7 @@ if (!isset($_SESSION['user_id'])) {
         </div>
 
         <div class="card-item">
-            <img src="./src/images/ev4.jpg" alt="Card Image">
+            <img src="./src/images/ev4.jpg" alt="Rural Education Outreach – Teach & Empower">
             <h3>Rural Education Outreach – Teach & Empower</h3>
             <p>Empower children in underserved villages by teaching basic English and digital skills for a brighter future.</p>
             <button class="join-btn" data-event="Rural Education Outreach">
@@ -575,7 +575,7 @@ if (!isset($_SESSION['user_id'])) {
         </div>
 
         <div class="card-item">
-            <img src="./src/images/ev5.jpg" alt="Card Image">
+            <img src="./src/images/ev5.jpg" alt="Food Donation Drive – Share a Meal">
             <h3>Food Donation Drive – Share a Meal</h3>
             <p>Distribute 500+ meal packs to families in need this festive season — you can brighten many lives in just one afternoon.</p>
             <button class="join-btn" data-event="Food Donation Drive">
@@ -585,7 +585,7 @@ if (!isset($_SESSION['user_id'])) {
         </div>
 
         <div class="card-item">
-            <img src="./src/images/ev6.jpg" alt="Card Image">
+            <img src="./src/images/ev6.jpg" alt="Virtual Mentoring Session – Online Volunteers">
             <h3>Virtual Mentoring Session – Online Volunteers</h3>
             <p>Join our virtual mentoring program: spend 1-2 hours with a student online and help shape their future from anywhere.</p>
             <button class="join-btn" data-event="Virtual Mentoring Session">
@@ -595,7 +595,7 @@ if (!isset($_SESSION['user_id'])) {
         </div>
 
         <div class="card-item">
-            <img src="./src/images/ev7.jpg" alt="Card Image">
+            <img src="./src/images/ev7.jpg" alt="Community Garden Revitalization">
             <h3>Community Garden Revitalization</h3>
             <p>Help greenify the city by creating eco-friendly gardens and providing free, fresh produce for underprivileged families.</p>
             <button class="join-btn" data-event="Community Garden Revitalization">
@@ -605,7 +605,7 @@ if (!isset($_SESSION['user_id'])) {
         </div>
 
         <div class="card-item">
-            <img src="./src/images/ev8.jpg" alt="Card Image">
+            <img src="./src/images/ev8.jpg" alt="School Renovation Drive">
             <h3>School Renovation Drive</h3>
             <p>Bring color and comfort to classrooms—volunteer your time to improve education spaces for rural students.</p>
             <button class="join-btn" data-event="School Renovation Drive">
@@ -615,7 +615,7 @@ if (!isset($_SESSION['user_id'])) {
         </div>
 
         <div class="card-item">
-            <img src="./src/images/ev9.jpg" alt="Card Image">
+            <img src="./src/images/ev9.jpg" alt="Elderly Care Visit – Moments of Joy">
             <h3>Elderly Care Visit – "Moments of Joy"</h3>
             <p>Share your time and heart—bring smiles and companionship to our beloved elders.</p>
             <button class="join-btn" data-event="Elderly Care Visit">

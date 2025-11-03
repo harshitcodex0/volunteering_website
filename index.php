@@ -47,7 +47,7 @@ if (!isset($_SESSION['user_id'])) {
             --body-color: #ffffff;
             --text-color: #333333;
             --title-color: #1a1a1a;
-            --first-color: #4CAF50;
+            --first-color: #003153;
             --first-color-lighten: #f0f0f0;
             --container-color: #ffffff;
             --border-color: #e0e0e0;
@@ -61,7 +61,7 @@ if (!isset($_SESSION['user_id'])) {
             --body-color: #1a1a1a;
             --text-color: #e0e0e0;
             --title-color: #ffffff;
-            --first-color: #66bb6a;
+            --first-color: #white;
             --first-color-lighten: #2d2d2d;
             --container-color: #252525;
             --border-color: #404040;
@@ -277,7 +277,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="index.php" class="nav__link active-link">
+                        <a href="index.php" class="nav__link">
                             <i class='bx bx-home-alt nav__icon'></i>
                             <span class="nav__name">Home</span>
                         </a>
@@ -356,7 +356,7 @@ if (!isset($_SESSION['user_id'])) {
             We connect passionate volunteers with meaningful causes, empowering ordinary people to make extraordinary impact.        
         </p>
             <form class="form-blk " >
-                <a class="text-blk button" href="event.php" >
+                <a class="text-blk button" style="text-decoration:none; background-color:#3e8fde;" href="event.php" >
                 Explore Our Events
                 </a>
             </form>
@@ -370,7 +370,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="about-content">
                 <div class="about-text">
                     <span class="about-subtitle">Who We Are?</span>
-                    <h2 class="about-title">We're not a travel company. <span class="highlight">We're a movement.</span></h2>
+                    <h2 class="about-title">We're a movement.</h2>
                     <p class="about-description">
                         VolunTribe is India’s first community-powered volunteering platform where passionate individuals come together to share their time, skills, and compassion to create real impact.
                         From supporting local causes to uplifting communities, VolunTribe connects people with opportunities that inspire purpose, unity, and positive change.

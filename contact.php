@@ -420,7 +420,7 @@ if (!isset($_SESSION['user_id'])) {
                     </li>
 
                     <li class="nav__item">
-                        <a href="contact.php" class="nav__link active-link">
+                        <a href="contact.php" class="nav__link">
                             <i class='bx bx-message-square-detail nav__icon'></i>
                             <span class="nav__name">Contact Us</span>
                         </a>
@@ -493,11 +493,36 @@ if (!isset($_SESSION['user_id'])) {
                     <h2 class="contact-form-title">Send Us A Message</h2>
 
                     <form id="contact-form" method="POST" action="https://formspree.io/f/mrbojggn" class="contact-form">
-                        <input type="text" name="name" required placeholder="Name" class="contact-input" />
+                        <input 
+                            type="text" 
+                            name="name" 
+                            id="name"
+                            required 
+                            placeholder="Name" 
+                            class="contact-input"
+                            pattern="[A-Za-z\s]+"
+                            title="Name should only contain letters and spaces"
+                        />
 
-                        <input type="email" name="email" required placeholder="Email" class="contact-input" />
+                        <input 
+                            type="email" 
+                            name="email" 
+                            id="email"
+                            required 
+                            placeholder="Email" 
+                            class="contact-input" 
+                        />
 
-                        <input type="text" name="phone" placeholder="Phone" class="contact-input" />
+                        <input 
+                            type="tel" 
+                            name="phone" 
+                            id="phone"
+                            placeholder="Phone (10 digits)" 
+                            class="contact-input"
+                            pattern="[0-9]{10}"
+                            maxlength="10"
+                            title="Phone number must be exactly 10 digits"
+                        />
 
                         <div class="contact-radio-group">
                             <label class="contact-radio-label">Preferred method of communication</label>
@@ -513,7 +538,13 @@ if (!isset($_SESSION['user_id'])) {
                             </div>
                         </div>
 
-                        <textarea name="message" placeholder="Message" rows="4" class="contact-textarea"></textarea>
+                        <textarea 
+                            name="message" 
+                            id="message"
+                            placeholder="Message" 
+                            rows="4" 
+                            class="contact-textarea"
+                        ></textarea>
 
                         <button type="submit" class="contact-submit">Send Message</button>
                     </form>

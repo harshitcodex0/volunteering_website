@@ -680,7 +680,7 @@ if (!isset($_SESSION['user_id'])) {
                     </li>
                     
                     <li class="nav__item">
-                        <a href="about.php" class="nav__link active-link">
+                        <a href="about.php" class="nav__link">
                             <i class='bx bx-user nav__icon'></i>
                             <span class="nav__name">About</span>
                         </a>

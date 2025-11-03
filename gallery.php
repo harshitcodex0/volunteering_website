@@ -268,7 +268,7 @@ if (!isset($_SESSION['user_id'])) {
                     </li>
 
                     <li class="nav__item">
-                        <a href="gallery.php" class="nav__link active-link">
+                        <a href="gallery.php" class="nav__link">
                             <i class='bx bx-briefcase-alt nav__icon'></i>
                             <span class="nav__name">Gallery</span>
                         </a>
