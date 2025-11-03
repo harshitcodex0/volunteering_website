@@ -691,15 +691,15 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="footer__info">
                     <div class="footer__logo">
                         <i class='bx bx-grid-alt'></i>
-                        <span>MITVOL</span>
+                        <span>VolunTribe</span>
                     </div>
 
                     <p class="footer__description">
-                        MITVOL is a platform that connects volunteers and organizations to make meaningful social impact together. 
+                        VolunTribe is a platform that connects volunteers and organizations to make meaningful social impact together. 
                     </p>
 
                     <p class="footer__description">
-                        Join hands with MITVOL to build communities, empower change, and create a better tomorrow through volunteering.
+                        Join hands with VolunTribe to build communities, empower change, and create a better tomorrow through volunteering.
                     </p>
                 </div>
 
@@ -733,7 +733,7 @@ if (!isset($_SESSION['user_id'])) {
             </div>
 
             <div class="footer__bottom">
-                <p class="footer__copyright">© Copyright 2025 MITVOL. All rights reserved.</p>
+                <p class="footer__copyright">© Copyright 2025 VolunTribe. All rights reserved.</p>
                 <div class="footer__social">
                     <a href="#" class="footer__social-link"><i class='bx bxl-twitter'></i></a>
                     <a href="#" class="footer__social-link"><i class='bx bxl-instagram'></i></a>

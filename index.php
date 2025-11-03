@@ -87,6 +87,10 @@ if (!isset($_SESSION['user_id'])) {
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
+        html, body{
+            min-width: 400px;
+        }
+
         h1{
             color: white !important;
         }

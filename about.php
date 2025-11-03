@@ -357,8 +357,10 @@ if (!isset($_SESSION['user_id'])) {
         }
 
         .team-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            /* grid-template-columns: repeat(3, 1fr); */
+            flex-wrap: wrap;
+
             gap: 40px;
             max-width: 1000px;
             margin: 0 auto;
@@ -616,6 +618,45 @@ if (!isset($_SESSION['user_id'])) {
                 flex-direction: column;
                 gap: 20px;
                 text-align: center;
+            }
+        }
+
+        /* Minimum width constraint - prevents page from getting too narrow */
+        html, body {
+            min-width: 400px;
+        }
+
+        body {
+            overflow-x: auto; /* Allow horizontal scroll if viewport is smaller than 400px */
+        }
+
+        /* Stack team cards vertically on small screens */
+        @media screen and (max-width: 768px) {
+            .team-grid {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem;
+            }
+            
+            .team-member {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+        }
+
+        /* Tablet - 2 columns */
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
+            .team-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+
+        /* Desktop - 3 columns */
+        @media screen and (min-width: 1025px) {
+            .team-grid {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
             }
         }
     </style>
