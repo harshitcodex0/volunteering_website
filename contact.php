@@ -271,7 +271,7 @@
 
         .contact-info-item,
         .contact-info-item h5 {
-            color: var(--text-color) !important;
+            color: black;
         }
 
         .contact-input,
