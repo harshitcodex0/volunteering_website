@@ -23,82 +23,448 @@ $user = [
   <title>VolunTribe - Profile</title>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Dark Mode Variables */
+    :root {
+      --body-color: #ffffff;
+      --text-color: #333333;
+      --title-color: #1a1a1a;
+      --first-color: #003153;
+      --first-color-lighten: #f0f0f0;
+      --container-color: #ffffff;
+      --border-color: #e0e0e0;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+      --card-bg: #ffffff;
+      --gradient-from: #6366f1;
+      --gradient-to: #2563eb;
+      --profile-bg: #f9fafb;
+    }
+
+    [data-theme="dark"] {
+      --body-color: #1a1a1a;
+      --text-color: #e0e0e0;
+      --title-color: #ffffff;
+      --first-color: #003153;
+      --first-color-lighten: #2d2d2d;
+      --container-color: #252525;
+      --border-color: #404040;
+      --shadow-color: rgba(255, 255, 255, 0.1);
+      --card-bg: #2d2d2d;
+      --gradient-from: #4f46e5;
+      --gradient-to: #1e40af;
+      --profile-bg: #1a1a1a;
+    }
+
+    /* High Contrast Mode */
+    [data-contrast="high"] {
+      filter: contrast(1.2) brightness(1.1);
+    }
+
+    [data-theme="dark"][data-contrast="high"] {
+      filter: contrast(1.3) brightness(0.9);
+    }
+
+    /* Apply theme to body */
+    body {
+      background-color: var(--profile-bg);
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Header Styles */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--container-color);
+      box-shadow: 0 2px 10px var(--shadow-color);
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .nav__logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--title-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav__menu {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav__list {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav__link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: color 0.3s;
+      padding: 0.5rem;
+    }
+
+    .nav__link:hover,
+    .nav__link.active-link {
+      color: var(--first-color);
+    }
+
+    .nav__icon {
+      font-size: 1.5rem;
+      color: var(--text-color);
+      transition: color 0.3s;
+    }
+
+    .nav__link:hover .nav__icon,
+    .nav__link.active-link .nav__icon {
+      color: var(--first-color);
+    }
+
+    .nav__name {
+      font-size: 0.875rem;
+      color: var(--text-color);
+      transition: color 0.3s;
+    }
+
+    .nav__toggle {
+      display: none;
+      font-size: 1.5rem;
+      color: var(--title-color);
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    /* Toggle Buttons */
+    .theme-btn,
+    .accessibility-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      transition: all 0.3s ease;
+      background: var(--first-color-lighten);
+      color: var(--title-color);
+      margin-right: 15px;
+    }
+
+    .theme-btn:hover,
+    .accessibility-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px var(--shadow-color);
+    }
+
+    /* Profile Dropdown */
+    .profile-dropdown {
+      position: relative;
+    }
+
+    .nav__img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.3s;
+      object-fit: cover;
+      border: 2px solid var(--first-color);
+    }
+
+    .nav__img:hover {
+      transform: scale(1.1);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      background-color: var(--container-color);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px var(--shadow-color);
+      min-width: 180px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .dropdown-menu.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .dropdown-item:first-child {
+      border-radius: 8px 8px 0 0;
+    }
+
+    .dropdown-item:last-child {
+      border-radius: 0 0 8px 8px;
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--first-color-lighten);
+    }
+
+    .dropdown-item i {
+      font-size: 1.2rem;
+      color: var(--first-color);
+    }
+
+    .dropdown-item span {
+      font-size: 0.95rem;
+      color: var(--text-color);
+    }
+
+    /* Profile Section Styles */
+    .profile-card {
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .profile-gradient {
+      background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+      transition: background 0.3s ease;
+    }
+
+    .profile-info-box {
+      background-color: var(--first-color-lighten);
+      color: var(--text-color);
+      transition: background-color 0.3s ease;
+    }
+
+    .profile-text {
+      color: var(--text-color);
+    }
+
+    .profile-title {
+      color: var(--title-color);
+    }
+
+    /* Footer Dark Mode Styles */
+    .footer {
+      background-color: var(--first-color-lighten);
+      color: var(--text-color);
+    } 
+
+    .footer__title,
+    .footer__logo span {
+      color: var(--title-color);
+    }
+
+    .footer__description,
+    .footer__link {
+      color: var(--text-color);
+    }
+
+    .footer__copyright {
+      color: var(--text-color);
+    }
+
+    .footer__social-link {
+      color: var(--text-color);
+    }
+
+    /* Mobile responsiveness */
+    @media screen and (max-width: 768px) {
+      .nav__menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        background-color: var(--container-color);
+        padding: 2rem 0;
+        transition: left 0.3s;
+        box-shadow: 0 4px 12px var(--shadow-color);
+      }
+
+      .nav__menu.show-menu {
+        left: 0;
+      }
+
+      .nav__list {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .nav__toggle {
+        display: block;
+      }
+
+      .theme-btn,
+      .accessibility-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+        margin-right: 10px;
+      }
+    }
+  </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body>
 
   <!-- Header -->
-  <header class="header fixed top-0 w-full bg-white shadow-md z-50">
-    <nav class="nav container mx-auto flex justify-between items-center px-6 py-4">
-      <a href="index.php" class="text-2xl font-bold text-blue-700">VolunTribe</a>
-
-      <div class="hidden md:flex space-x-6">
-        <a href="index.php" class="text-gray-700 hover:text-blue-600">Home</a>
-        <a href="about.php" class="text-gray-700 hover:text-blue-600">About</a>
-        <a href="event.php" class="text-gray-700 hover:text-blue-600">Events</a>
-        <a href="gallery.php" class="text-gray-700 hover:text-blue-600">Gallery</a>
-        <a href="contact.php" class="text-gray-700 hover:text-blue-600">Contact</a>
+  <header class="header" id="header">
+    <nav class="nav"> 
+      <div class="nav__toggle" id="nav-toggle">
+        <i class='bx bx-menu'></i>
       </div>
 
-      <div class="relative">
-        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop"
-             alt="Profile"
-             class="w-10 h-10 rounded-full border-2 border-blue-600 cursor-pointer object-cover"
-             id="profile-toggle">
+      <a href="index.php" class="nav__logo">VolunTribe</a>
 
-        <div id="dropdown-menu"
-             class="absolute right-0 mt-3 w-48 bg-white rounded-lg shadow-lg hidden opacity-0 scale-95 transform transition-all duration-200 origin-top-right">
-          <a href="profile.php" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100">
-            <i class='bx bx-user text-blue-600'></i> <span>Profile</span>
-          </a>
-          <a href="logout.php" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100">
-            <i class='bx bx-log-out text-blue-600'></i> <span>Logout</span>
-          </a>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="index.php" class="nav__link">
+              <i class='bx bx-home-alt nav__icon'></i>
+              <span class="nav__name">Home</span>
+            </a>
+          </li>
+          
+          <li class="nav__item">
+            <a href="about.php" class="nav__link">
+              <i class='bx bx-user nav__icon'></i>
+              <span class="nav__name">About</span>
+            </a>
+          </li>
+
+          <li class="nav__item">
+            <a href="event.php" class="nav__link">
+              <i class='bx bx-book-alt nav__icon'></i>
+              <span class="nav__name">Events</span>
+            </a>
+          </li>
+
+          <li class="nav__item">
+            <a href="gallery.php" class="nav__link">
+              <i class='bx bx-briefcase-alt nav__icon'></i>
+              <span class="nav__name">Gallery</span>
+            </a>
+          </li>
+
+          <li class="nav__item">
+            <a href="contact.php" class="nav__link">
+              <i class='bx bx-message-square-detail nav__icon'></i>
+              <span class="nav__name">Contact Us</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Dark Mode, Accessibility & Profile -->
+      <div style="display: flex; align-items: center;">
+        <!-- Dark Mode Toggle Button -->
+        <button class="theme-btn" id="theme-toggle" title="Toggle Dark Mode">
+          <i class='bx bx-moon'></i>
+        </button>
+
+        <!-- Accessibility Toggle Button -->
+        <button class="accessibility-btn" id="accessibility-toggle" title="Toggle High Contrast">
+          <i class='bx bx-low-vision'></i>
+        </button>
+
+        <!-- Profile Dropdown -->
+        <div class="profile-dropdown">
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Profile" class="nav__img" id="profile-toggle">
+          <div class="dropdown-menu" id="dropdown-menu">
+            <a href="profile.php" class="dropdown-item">
+              <i class='bx bx-user'></i>
+              <span>Profile</span>
+            </a>
+            <a href="logout.php" class="dropdown-item">
+              <i class='bx bx-log-out'></i>
+              <span>Logout</span>
+            </a>
+          </div>
         </div>
       </div>
     </nav>
   </header>
 
   <!-- Profile Section -->
-  <section class="pt-28 pb-20">
+  <section class="pt-8 pb-20" style="padding-top: 100px;">
     <div class="container mx-auto px-6 max-w-5xl">
-      <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
+      <div class="profile-card shadow-lg rounded-2xl overflow-hidden">
         <!-- Top Banner -->
-        <div class="h-48 bg-gradient-to-r from-indigo-500 to-blue-600"></div>
+        <div class="h-48 profile-gradient"></div>
 
         <!-- Profile Card -->
         <div class="px-6 pb-10 -mt-16 flex flex-col items-center">
           <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop"
                alt="User Profile"
-               class="w-32 h-32 rounded-full border-4 border-white shadow-md object-cover mb-4">
+               class="w-32 h-32 rounded-full border-4 shadow-md object-cover mb-4"
+               style="border-color: var(--card-bg);">
 
-          <h2 class="text-2xl font-bold text-gray-800"><?= htmlspecialchars($user['name']); ?></h2>
-          <p class="text-gray-500"><?= htmlspecialchars($user['email']); ?></p>
-          <p class="text-indigo-600 font-medium mt-1"><?= htmlspecialchars($user['role']); ?></p>
+          <h2 class="text-2xl font-bold profile-title"><?= htmlspecialchars($user['name']); ?></h2>
+          <p class="profile-text opacity-75"><?= htmlspecialchars($user['email']); ?></p>
+          <p class="font-medium mt-1" style="color: #6366f1;"><?= htmlspecialchars($user['role']); ?></p>
 
           <!-- Info Grid -->
           <div class="grid sm:grid-cols-2 gap-6 mt-8 w-full max-w-3xl text-center">
-            <div class="p-4 rounded-xl bg-gray-100 shadow-sm">
-              <i class='bx bx-map text-indigo-600 text-2xl'></i>
-              <h4 class="text-sm font-semibold mt-2 text-gray-700">Location</h4>
-              <p class="text-gray-500 text-sm"><?= htmlspecialchars($user['location']); ?></p>
+            <div class="p-4 rounded-xl profile-info-box shadow-sm">
+              <i class='bx bx-map text-2xl' style="color: #6366f1;"></i>
+              <h4 class="text-sm font-semibold mt-2 profile-title">Location</h4>
+              <p class="profile-text text-sm opacity-75"><?= htmlspecialchars($user['location']); ?></p>
             </div>
-            <div class="p-4 rounded-xl bg-gray-100 shadow-sm">
-              <i class='bx bx-calendar text-indigo-600 text-2xl'></i>
-              <h4 class="text-sm font-semibold mt-2 text-gray-700">Joined</h4>
-              <p class="text-gray-500 text-sm"><?= htmlspecialchars($user['joined']); ?></p>
+            <div class="p-4 rounded-xl profile-info-box shadow-sm">
+              <i class='bx bx-calendar text-2xl' style="color: #6366f1;"></i>
+              <h4 class="text-sm font-semibold mt-2 profile-title">Joined</h4>
+              <p class="profile-text text-sm opacity-75"><?= htmlspecialchars($user['joined']); ?></p>
             </div>
           </div>
 
           <!-- Bio Section -->
           <div class="mt-8 max-w-3xl text-center">
-            <h3 class="text-lg font-semibold text-gray-800 mb-2">About Me</h3>
-            <p class="text-gray-600 leading-relaxed"><?= htmlspecialchars($user['bio']); ?></p>
+            <h3 class="text-lg font-semibold profile-title mb-2">About Me</h3>
+            <p class="profile-text leading-relaxed opacity-90"><?= htmlspecialchars($user['bio']); ?></p>
           </div>
 
           <!-- Buttons -->
           <div class="mt-8 flex flex-col gap-3 w-48">
-            <button class="bg-indigo-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-indigo-700 transition shadow-md">
+            <button class="text-white px-6 py-2 rounded-full font-semibold transition shadow-md" 
+                    style="background-color: #6366f1;"
+                    onmouseover="this.style.backgroundColor='#4f46e5'"
+                    onmouseout="this.style.backgroundColor='#6366f1'">
               Edit Profile
             </button>
 
@@ -116,34 +482,166 @@ $user = [
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-100 py-10 mt-10">
-    <div class="container mx-auto px-6 text-center text-gray-600 text-sm">
-      <p>© 2025 VolunTribe. All rights reserved.</p>
-      <div class="flex justify-center gap-4 mt-3">
-        <a href="#" class="hover:text-blue-600"><i class="bx bxl-twitter text-lg"></i></a>
-        <a href="#" class="hover:text-blue-600"><i class="bx bxl-instagram text-lg"></i></a>
-        <a href="#" class="hover:text-blue-600"><i class="bx bxl-facebook text-lg"></i></a>
+  <footer class="footer">
+    <div class="footer__container container">
+      <div class="footer__content">
+        <div class="footer__info">
+          <div class="footer__logo">
+            <i class='bx bx-grid-alt'></i>
+            <span>VolunTribe</span>
+          </div>
+
+          <p class="footer__description">
+            VolunTribe is a platform that connects volunteers and organizations to make meaningful social impact together. 
+          </p>
+
+          <p class="footer__description">
+            Join hands with VolunTribe to build communities, empower change, and create a better tomorrow through volunteering.
+          </p>
+        </div>
+
+        <div class="footer__links">
+          <div class="footer__column">
+            <h3 class="footer__title">Quick Links</h3>
+            <ul class="footer__list">
+              <li><a href="index.php" class="footer__link">Home</a></li>
+              <li><a href="about.php" class="footer__link">About</a></li>
+              <li><a href="event.php" class="footer__link">Events</a></li>
+              <li><a href="gallery.php" class="footer__link">Gallery</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__column">
+            <h3 class="footer__title">Connect</h3>
+            <ul class="footer__list">
+              <li><a href="login.php" class="footer__link">Login</a></li>
+              <li><a href="register.php" class="footer__link">Register</a></li>
+              <li><a href="contact.php" class="footer__link">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__map">
+            <h3 class="footer__title">Our Location</h3>
+            <div class="map-container">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7763.927438756527!2d74.78482487609999!3d13.352532100000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbca4a7d2c4edb7%3A0x8d588d4fb81d861f!2sManipal%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1761484628724!5m2!1sen!2sin" width="300" height="180" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">© Copyright 2025 VolunTribe. All rights reserved.</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link"><i class='bx bxl-twitter'></i></a>
+          <a href="#" class="footer__social-link"><i class='bx bxl-instagram'></i></a>
+          <a href="#" class="footer__social-link"><i class='bx bxl-facebook'></i></a>
+        </div>
       </div>
     </div>
   </footer>
 
   <!-- JS -->
   <script>
-    const profileToggle = document.getElementById("profile-toggle");
-    const dropdownMenu = document.getElementById("dropdown-menu");
-    if (profileToggle && dropdownMenu) {
-      profileToggle.addEventListener("click", (e) => {
-        e.stopPropagation();
-        dropdownMenu.classList.toggle("hidden");
-        dropdownMenu.classList.toggle("opacity-0");
-        dropdownMenu.classList.toggle("scale-95");
-      });
-      document.addEventListener("click", (e) => {
-        if (!profileToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
-          dropdownMenu.classList.add("hidden", "opacity-0", "scale-95");
+    // Hamburger Menu Toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('show-menu');
+        const icon = navToggle.querySelector('i');
+        if (navMenu.classList.contains('show-menu')) {
+          icon.classList.remove('bx-menu');
+          icon.classList.add('bx-x');
+        } else {
+          icon.classList.remove('bx-x');
+          icon.classList.add('bx-menu');
         }
       });
     }
+
+    // Close menu when clicking on a link
+    const navLinks = document.querySelectorAll('.nav__link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (navMenu) {
+          navMenu.classList.remove('show-menu');
+          const icon = navToggle.querySelector('i');
+          icon.classList.remove('bx-x');
+          icon.classList.add('bx-menu');
+        }
+      });
+    });
+
+    // Profile Dropdown Toggle
+    const profileToggle = document.getElementById('profile-toggle');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+
+    if (profileToggle && dropdownMenu) {
+      profileToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdownMenu.classList.toggle('show');
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!profileToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+          dropdownMenu.classList.remove('show');
+        }
+      });
+
+      document.querySelectorAll('.dropdown-item').forEach(item => {
+        item.addEventListener('click', () => {
+          dropdownMenu.classList.remove('show');
+        });
+      });
+    }
+
+    // ===== DARK MODE FUNCTIONALITY =====
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
+
+    // Load saved theme preference
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    });
+
+    // Update icon based on theme
+    function updateThemeIcon(theme) {
+      if (theme === 'dark') {
+        themeIcon.classList.remove('bx-moon');
+        themeIcon.classList.add('bx-sun');
+      } else {
+        themeIcon.classList.remove('bx-sun');
+        themeIcon.classList.add('bx-moon');
+      }
+    }
+
+    // ===== ACCESSIBILITY (HIGH CONTRAST) FUNCTIONALITY =====
+    const accessibilityToggle = document.getElementById('accessibility-toggle');
+
+    // Load saved contrast preference
+    const savedContrast = localStorage.getItem('contrast') || 'normal';
+    document.documentElement.setAttribute('data-contrast', savedContrast);
+
+    // Toggle contrast on button click
+    accessibilityToggle.addEventListener('click', () => {
+      const currentContrast = document.documentElement.getAttribute('data-contrast');
+      const newContrast = currentContrast === 'high' ? 'normal' : 'high';
+      
+      document.documentElement.setAttribute('data-contrast', newContrast);
+      localStorage.setItem('contrast', newContrast);
+    });
   </script>
 </body>
 </html>

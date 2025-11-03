@@ -1,10 +1,3 @@
-<?php
-// session_start();
-// if (!isset($_SESSION['user_id'])) {
-//   header("Location: login.php");
-//   exit;
-// }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,92 +9,223 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
   <style>
+    /* Toggle Buttons */
+    .theme-btn,
+    .accessibility-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        transition: all 0.3s ease;
+        background: var(--first-color-lighten, #f0f0f0);
+        color: var(--title-color, #333);
+        margin-right: 15px;
+    }
+
+    .theme-btn:hover,
+    .accessibility-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Dark Mode Variables */
+    :root {
+        --body-color: #ffffff;
+        --text-color: #333333;
+        --title-color: #1a1a1a;
+        --first-color: #4CAF50;
+        --first-color-lighten: #f0f0f0;
+        --container-color: #ffffff;
+        --border-color: #e0e0e0;
+        --shadow-color: rgba(0, 0, 0, 0.1);
+        --gallery-title-color: #003153;
+        --footer-bg: #f8f9fa;
+    }
+
+    [data-theme="dark"] {
+        --body-color: #1a1a1a;
+        --text-color: #e0e0e0;
+        --title-color: #ffffff;
+        --first-color: #66bb6a;
+        --first-color-lighten: #2d2d2d;
+        --container-color: #252525;
+        --border-color: #404040;
+        --shadow-color: rgba(255, 255, 255, 0.1);
+        --gallery-title-color: #66b3ff;
+        --footer-bg: #252525;
+    }
+
+    /* High Contrast Mode */
+    [data-contrast="high"] {
+        filter: contrast(1.2) brightness(1.1);
+    }
+
+    [data-theme="dark"][data-contrast="high"] {
+        filter: contrast(1.3) brightness(0.9);
+    }
+
+    /* Apply theme to body and common elements */
+    body {
+        background-color: var(--body-color) !important;
+        color: var(--text-color) !important;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .header {
+        background-color: var(--container-color) !important;
+        box-shadow: 0 2px 8px var(--shadow-color) !important;
+    }
+
+    .nav__logo {
+        color: var(--title-color) !important;
+    }
+
+    .nav__name {
+        color: var(--text-color) !important;
+    }
+
+    .nav__icon {
+        color: var(--text-color) !important;
+    }
+
+    .nav__menu {
+        background-color: var(--container-color) !important;
+    }
+
+    .footer {
+        background-color: var(--footer-bg) !important;
+        color: var(--text-color) !important;
+    }
+
+    .footer__title,
+    .footer__logo span {
+        color: var(--title-color) !important;
+    }
+
+    .footer__description,
+    .footer__link {
+        color: var(--text-color) !important;
+    }
+
+    .footer__copyright {
+        color: var(--text-color) !important;
+    }
+
+    .footer__social-link {
+        color: var(--text-color) !important;
+    }
+
+    .dropdown-menu {
+        background-color: var(--container-color) !important;
+        border-color: var(--border-color) !important;
+        box-shadow: 0 4px 12px var(--shadow-color) !important;
+    }
+
+    .dropdown-item {
+        color: var(--text-color) !important;
+    }
+
+    .dropdown-item:hover {
+        background-color: var(--first-color-lighten) !important;
+    }
 
     /* Gallery Section Styles */
-
-/* Main Container */
-.gallery-main {
-    padding-top: 2rem;
-    padding-bottom: 4rem;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-}
-
-/* Gallery Title */
-.gallery-title {
-    font-size: 1.875rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 2.5rem;
-    color: #003153;
-}
-
-/* Gallery Grid Container */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-}
-
-/* Gallery Item */
-.gallery-item {
-    width: 100%;
-    overflow: hidden;
-    border-radius: 0.5rem;
-}
-
-/* Gallery Image */
-.gallery-img {
-    width: 100%;
-    height: 13rem;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 0.5rem;
-    transition: transform 0.3s ease;
-}
-
-.gallery-item:hover .gallery-img {
-    transform: scale(1.05);
-}
-
-/* Tablet - 2 Columns */
-@media (min-width: 640px) {
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Desktop - 3 Columns */
-@media (min-width: 768px) {
-    .gallery-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .gallery-title {
-        font-size: 2.25rem;
-    }
-}
-
-/* Large Desktop */
-@media (min-width: 1024px) {
     .gallery-main {
-        padding-top: 3rem;
-        padding-bottom: 5rem;
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        background-color: var(--body-color);
     }
-    
+
+    .gallery-title {
+        font-size: 1.875rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 2.5rem;
+        color: var(--gallery-title-color);
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .gallery-item {
+        width: 100%;
+        overflow: hidden;
+        border-radius: 0.5rem;
+        background-color: var(--container-color);
+    }
+
     .gallery-img {
-        height: 14rem;
+        width: 100%;
+        height: 13rem;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 0.5rem;
+        transition: transform 0.3s ease;
     }
-}
+
+    .gallery-item:hover .gallery-img {
+        transform: scale(1.05);
+    }
+
+    /* Tablet - 2 Columns */
+    @media (min-width: 640px) {
+        .gallery-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* Desktop - 3 Columns */
+    @media (min-width: 768px) {
+        .gallery-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .gallery-title {
+            font-size: 2.25rem;
+        }
+    }
+
+    /* Large Desktop */
+    @media (min-width: 1024px) {
+        .gallery-main {
+            padding-top: 3rem;
+            padding-bottom: 5rem;
+        }
+        
+        .gallery-img {
+            height: 14rem;
+        }
+    }
+
+    /* Mobile responsiveness for buttons */
+    @media screen and (max-width: 768px) {
+        .theme-btn,
+        .accessibility-btn {
+            width: 35px;
+            height: 35px;
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+    }
   </style>
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="bg-white text-gray-800">
+<body>
 
   <!-- Header -->
   <header class="header" id="header">
@@ -110,12 +234,12 @@
                 <i class='bx bx-menu'></i>
             </div>
 
-            <a href="index.php" class="nav__logo">MITVOLS</a>
+            <a href="index.php" class="nav__logo">VolunTribe</a>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="index.php" class="nav__link active-link">
+                        <a href="index.php" class="nav__link ">
                             <i class='bx bx-home-alt nav__icon'></i>
                             <span class="nav__name">Home</span>
                         </a>
@@ -136,7 +260,7 @@
                     </li>
 
                     <li class="nav__item">
-                        <a href="gallery.php" class="nav__link">
+                        <a href="gallery.php" class="nav__link active-link">
                             <i class='bx bx-briefcase-alt nav__icon'></i>
                             <span class="nav__name">Gallery</span>
                         </a>
@@ -151,18 +275,31 @@
                 </ul>
             </div>
 
-            <!-- Profile Dropdown -->
-            <div class="profile-dropdown">
-                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Profile" class="nav__img" id="profile-toggle">
-                <div class="dropdown-menu" id="dropdown-menu">
-                    <a href="#profile" class="dropdown-item">
-                        <i class='bx bx-user'></i>
-                        <span>Profile</span>
-                    </a>
-                    <a href="#logout" class="dropdown-item">
-                        <i class='bx bx-log-out'></i>
-                        <span>Logout</span>
-                    </a>
+            <!-- Dark Mode & Accessibility Toggle -->
+            <div style="display: flex; align-items: center;">
+                <!-- Dark Mode Toggle Button -->
+                <button class="theme-btn" id="theme-toggle" title="Toggle Dark Mode">
+                    <i class='bx bx-moon'></i>
+                </button>
+
+                <!-- Accessibility Toggle Button -->
+                <button class="accessibility-btn" id="accessibility-toggle" title="Toggle High Contrast">
+                    <i class='bx bx-low-vision'></i>
+                </button>
+
+                <!-- Profile Dropdown -->
+                <div class="profile-dropdown">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Profile" class="nav__img" id="profile-toggle">
+                    <div class="dropdown-menu" id="dropdown-menu">
+                        <a href="profile.php" class="dropdown-item">
+                            <i class='bx bx-user'></i>
+                            <span>Profile</span>
+                        </a>
+                        <a href="#logout" class="dropdown-item">
+                            <i class='bx bx-log-out'></i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -320,6 +457,52 @@
             item.addEventListener('click', () => {
                 dropdownMenu.classList.remove('show');
             });
+        });
+
+        // ===== DARK MODE FUNCTIONALITY =====
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+
+        // Load saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        // Update icon based on theme
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                themeIcon.classList.remove('bx-moon');
+                themeIcon.classList.add('bx-sun');
+            } else {
+                themeIcon.classList.remove('bx-sun');
+                themeIcon.classList.add('bx-moon');
+            }
+        }
+
+        // ===== ACCESSIBILITY (HIGH CONTRAST) FUNCTIONALITY =====
+        const accessibilityToggle = document.getElementById('accessibility-toggle');
+
+        // Load saved contrast preference
+        const savedContrast = localStorage.getItem('contrast') || 'normal';
+        document.documentElement.setAttribute('data-contrast', savedContrast);
+
+        // Toggle contrast on button click
+        accessibilityToggle.addEventListener('click', () => {
+            const currentContrast = document.documentElement.getAttribute('data-contrast');
+            const newContrast = currentContrast === 'high' ? 'normal' : 'high';
+            
+            document.documentElement.setAttribute('data-contrast', newContrast);
+            localStorage.setItem('contrast', newContrast);
         });
     </script>
 </body>

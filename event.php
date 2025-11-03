@@ -1,10 +1,3 @@
-<?php
-// session_start();
-// if (!isset($_SESSION['user_id'])) {
-//   header("Location: login.php");
-//   exit;
-// }    
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,9 +7,166 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css\about.css">
     <link rel="stylesheet" href="css\event.css">
-    <!-- <link rel="stylesheet" href="css\style.css"> -->
     <style>
+        /* Toggle Buttons */
+        .theme-btn,
+        .accessibility-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+            background: var(--first-color-lighten, #f0f0f0);
+            color: var(--title-color, #333);
+            margin-right: 15px;
+        }
 
+        .theme-btn:hover,
+        .accessibility-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Dark Mode Variables */
+        :root {
+            --body-color: #ffffff;
+            --text-color: #333333;
+            --title-color: #1a1a1a;
+            --first-color: #4CAF50;
+            --first-color-lighten: #f0f0f0;
+            --container-color: #ffffff;
+            --border-color: #e0e0e0;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --card-bg: #ffffff;
+            --card-hover-shadow: rgba(0, 0, 0, 0.15);
+        }
+
+        [data-theme="dark"] {
+            --body-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --title-color: #ffffff;
+            --first-color: #66bb6a;
+            --first-color-lighten: #2d2d2d;
+            --container-color: #252525;
+            --border-color: #404040;
+            --shadow-color: rgba(255, 255, 255, 0.1);
+            --card-bg: #2d2d2d;
+            --card-hover-shadow: rgba(255, 255, 255, 0.15);
+        }
+
+        /* High Contrast Mode */
+        [data-contrast="high"] {
+            filter: contrast(1.2) brightness(1.1);
+        }
+
+        [data-theme="dark"][data-contrast="high"] {
+            filter: contrast(1.3) brightness(0.9);
+        }
+
+        /* Apply theme to body and common elements */
+        body {
+            background-color: var(--body-color) !important;
+            color: var(--text-color) !important;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .header {
+            background-color: var(--container-color) !important;
+            box-shadow: 0 2px 8px var(--shadow-color) !important;
+        }
+
+        .nav__logo {
+            color: var(--title-color) !important;
+        }
+
+        .nav__name {
+            color: var(--text-color) !important;
+        }
+
+        .nav__icon {
+            color: var(--text-color) !important;
+        }
+
+        .nav__menu {
+            background-color: var(--container-color) !important;
+        }
+
+        /* Card List Styles */
+        .card-list {
+            background-color: var(--body-color) !important;
+        }
+
+        .card-item {
+            background-color: var(--card-bg) !important;
+            color: var(--text-color) !important;
+            border: 1px solid var(--border-color) !important;
+        }
+
+        .card-item:hover {
+            box-shadow: 0 8px 20px var(--card-hover-shadow) !important;
+        }
+
+        .card-item h3 {
+            color: var(--title-color) !important;
+        }
+
+        .card-item p {
+            color: var(--text-color) !important;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: var(--container-color) !important;
+            color: var(--text-color) !important;
+        }
+
+        .footer__title,
+        .footer__logo span {
+            color: var(--title-color) !important;
+        }
+
+        .footer__description,
+        .footer__link {
+            color: var(--text-color) !important;
+        }
+
+        .footer__copyright {
+            color: var(--text-color) !important;
+        }
+
+        .footer__social-link {
+            color: var(--text-color) !important;
+        }
+
+        .dropdown-menu {
+            background-color: var(--container-color) !important;
+            border-color: var(--border-color) !important;
+            box-shadow: 0 4px 12px var(--shadow-color) !important;
+        }
+
+        .dropdown-item {
+            color: var(--text-color) !important;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--first-color-lighten) !important;
+        }
+
+        /* Mobile responsiveness for buttons */
+        @media screen and (max-width: 768px) {
+            .theme-btn,
+            .accessibility-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+                margin-right: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -67,18 +217,31 @@
                 </ul>
             </div>
 
-            <!-- Profile Dropdown -->
-            <div class="profile-dropdown">
-                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Profile" class="nav__img" id="profile-toggle">
-                <div class="dropdown-menu" id="dropdown-menu">
-                    <a href="#profile" class="dropdown-item">
-                        <i class='bx bx-user'></i>
-                        <span>Profile</span>
-                    </a>
-                    <a href="logout.php" class="dropdown-item">
-                        <i class='bx bx-log-out'></i>
-                        <span>Logout</span>
-                    </a>
+            <!-- Dark Mode & Accessibility Toggle -->
+            <div style="display: flex; align-items: center;">
+                <!-- Dark Mode Toggle Button -->
+                <button class="theme-btn" id="theme-toggle" title="Toggle Dark Mode">
+                    <i class='bx bx-moon'></i>
+                </button>
+
+                <!-- Accessibility Toggle Button -->
+                <button class="accessibility-btn" id="accessibility-toggle" title="Toggle High Contrast">
+                    <i class='bx bx-low-vision'></i>
+                </button>
+
+                <!-- Profile Dropdown -->
+                <div class="profile-dropdown">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Profile" class="nav__img" id="profile-toggle">
+                    <div class="dropdown-menu" id="dropdown-menu">
+                        <a href="profile.php" class="dropdown-item">
+                            <i class='bx bx-user'></i>
+                            <span>Profile</span>
+                        </a>
+                        <a href="logout.php" class="dropdown-item">
+                            <i class='bx bx-log-out'></i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -162,7 +325,7 @@
         <a href="#" class="card-item">
             <img src="./src/images/ev9.jpg" alt="Card Image">
             
-            <h3>Elderly Care Visit – “Moments of Joy”</h3>
+            <h3>Elderly Care Visit – "Moments of Joy"</h3>
             <p>Share your time and heart—bring smiles and companionship to our beloved elders.</p>
             <div class="arrow">
                 <i class="fas fa-arrow-right card-icon"></i>
@@ -285,6 +448,52 @@
             item.addEventListener('click', () => {
                 dropdownMenu.classList.remove('show');
             });
+        });
+
+        // ===== DARK MODE FUNCTIONALITY =====
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+
+        // Load saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        // Update icon based on theme
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                themeIcon.classList.remove('bx-moon');
+                themeIcon.classList.add('bx-sun');
+            } else {
+                themeIcon.classList.remove('bx-sun');
+                themeIcon.classList.add('bx-moon');
+            }
+        }
+
+        // ===== ACCESSIBILITY (HIGH CONTRAST) FUNCTIONALITY =====
+        const accessibilityToggle = document.getElementById('accessibility-toggle');
+
+        // Load saved contrast preference
+        const savedContrast = localStorage.getItem('contrast') || 'normal';
+        document.documentElement.setAttribute('data-contrast', savedContrast);
+
+        // Toggle contrast on button click
+        accessibilityToggle.addEventListener('click', () => {
+            const currentContrast = document.documentElement.getAttribute('data-contrast');
+            const newContrast = currentContrast === 'high' ? 'normal' : 'high';
+            
+            document.documentElement.setAttribute('data-contrast', newContrast);
+            localStorage.setItem('contrast', newContrast);
         });
     </script>
 </body>

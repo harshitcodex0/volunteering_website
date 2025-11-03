@@ -1,68 +1,68 @@
+// Safe nav toggle
 const navToggle = document.getElementById("nav-toggle");
 const navMenu = document.getElementById("nav-menu");
-
-navToggle.addEventListener("click", () => {
-  navMenu.classList.toggle("show-menu");
-  // Change icon
-  const icon = navToggle.querySelector("i");
-  if (navMenu.classList.contains("show-menu")) {
-    icon.classList.remove("bx-menu");
-    icon.classList.add("bx-x");
-  } else {
-    icon.classList.remove("bx-x");
-    icon.classList.add("bx-menu");
-  }
-});
-
-// Close menu when clicking on a link
-const navLinks = document.querySelectorAll(".nav__link");
-navLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    navMenu.classList.remove("show-menu");
+if (navToggle && navMenu) {
+  navToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("show-menu");
     const icon = navToggle.querySelector("i");
-    icon.classList.remove("bx-x");
-    icon.classList.add("bx-menu");
-
-    // Update active link
-    navLinks.forEach((l) => l.classList.remove("active-link"));
-    link.classList.add("active-link");
+    if (icon) {
+      if (navMenu.classList.contains("show-menu")) {
+        icon.classList.remove("bx-menu");
+        icon.classList.add("bx-x");
+      } else {
+        icon.classList.remove("bx-x");
+        icon.classList.add("bx-menu");
+      }
+    }
   });
-});
 
-// Profile Dropdown Toggle
+  // Close menu when clicking on a link
+  const navLinks = document.querySelectorAll(".nav__link");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("show-menu");
+      const icon = navToggle.querySelector("i");
+      if (icon) {
+        icon.classList.remove("bx-x");
+        icon.classList.add("bx-menu");
+      }
+      navLinks.forEach((l) => l.classList.remove("active-link"));
+      link.classList.add("active-link");
+    });
+  });
+}
+
+// Profile Dropdown Toggle (safe guards for pages without profile UI)
+// Profile Dropdown Toggle (Tailwind-safe version)
 const profileToggle = document.getElementById("profile-toggle");
 const dropdownMenu = document.getElementById("dropdown-menu");
 
-profileToggle.addEventListener("click", (e) => {
-  e.stopPropagation();
-  dropdownMenu.classList.toggle("show");
-});
-
-// Close dropdown when clicking outside
-document.addEventListener("click", (e) => {
-  if (!profileToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
-    dropdownMenu.classList.remove("show");
-  }
-});
-
-// Close dropdown when clicking a menu item
-document.querySelectorAll(".dropdown-item").forEach((item) => {
-  item.addEventListener("click", () => {
-    dropdownMenu.classList.remove("show");
+if (profileToggle && dropdownMenu) {
+  profileToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dropdownMenu.classList.toggle("hidden");
+    dropdownMenu.classList.toggle("opacity-0");
+    dropdownMenu.classList.toggle("scale-95");
   });
-});
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!profileToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+      dropdownMenu.classList.add("hidden", "opacity-0", "scale-95");
+    }
+  });
+
+  // Close dropdown when clicking a menu item
+  document.querySelectorAll(".dropdown-item").forEach((item) => {
+    item.addEventListener("click", () => {
+      dropdownMenu.classList.add("hidden", "opacity-0", "scale-95");
+    });
+  });
+}
 
 
-
-
-
-
-
-
-
-
-
-// console.clear();
+// Slider (React) — run only if React is available and #app exists
+console.clear();
 
 // const slides = [
 //   {
@@ -368,7 +368,5 @@ ReactDOM.render(<App />, elApp);
             );
         }
 
-        const carouselRoot = ReactDOM.createRoot(document.getElementById("carousel-app"));
-        carouselRoot.render(React.createElement(CarouselApp));
-
-
+const elApp = document.getElementById("app");
+ReactDOM.render(<App />, elApp);
