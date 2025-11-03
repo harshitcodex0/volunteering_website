@@ -44,6 +44,12 @@
             --shadow-color: rgba(0, 0, 0, 0.1);
             --card-bg: #ffffff;
             --card-hover-shadow: rgba(0, 0, 0, 0.15);
+            --button-bg: #4CAF50;
+            --button-hover: #45a049;
+            --button-text: #ffffff;
+            --modal-overlay: rgba(0, 0, 0, 0.5);
+            --input-bg: #ffffff;
+            --input-border: #ddd;
         }
 
         [data-theme="dark"] {
@@ -57,6 +63,12 @@
             --shadow-color: rgba(255, 255, 255, 0.1);
             --card-bg: #2d2d2d;
             --card-hover-shadow: rgba(255, 255, 255, 0.15);
+            --button-bg: #66bb6a;
+            --button-hover: #81c784;
+            --button-text: #1a1a1a;
+            --modal-overlay: rgba(0, 0, 0, 0.8);
+            --input-bg: #2d2d2d;
+            --input-border: #404040;
         }
 
         /* High Contrast Mode */
@@ -105,6 +117,11 @@
             background-color: var(--card-bg) !important;
             color: var(--text-color) !important;
             border: 1px solid var(--border-color) !important;
+            position: relative;
+            padding-bottom: 100px !important;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
         }
 
         .card-item:hover {
@@ -113,10 +130,262 @@
 
         .card-item h3 {
             color: var(--title-color) !important;
+            margin-bottom: 12px;
         }
 
         .card-item p {
             color: var(--text-color) !important;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        /* Join Button Styles */
+        .join-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            padding: 12px 32px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .join-btn:hover {
+            background: var(--button-hover);
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 6px 16px var(--shadow-color);
+        }
+
+        .join-btn:active {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .join-btn i {
+            font-size: 1.2rem;
+        }
+
+        /* Remove arrow from cards */
+        .card-item .arrow {
+            display: none;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--modal-overlay);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-content {
+            background: var(--container-color);
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s ease;
+            box-shadow: 0 10px 40px var(--shadow-color);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .modal-title {
+            color: var(--title-color);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .modal-close {
+            background: var(--first-color-lighten);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: var(--text-color);
+        }
+
+        .modal-close:hover {
+            background: var(--border-color);
+            transform: rotate(90deg);
+        }
+
+        .modal-close i {
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--title-color);
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--input-border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--input-bg);
+            color: var(--text-color);
+            font-family: inherit;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--button-bg);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+
+        [data-theme="dark"] .form-input:focus,
+        [data-theme="dark"] .form-textarea:focus,
+        [data-theme="dark"] .form-select:focus {
+            box-shadow: 0 0 0 3px rgba(102, 187, 106, 0.2);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-submit {
+            background: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            padding: 14px 32px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+
+        .form-submit:hover {
+            background: var(--button-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px var(--shadow-color);
+        }
+
+        .form-submit:active {
+            transform: translateY(0);
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideUp 0.3s ease;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--button-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            animation: scaleIn 0.5s ease;
+        }
+
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .success-icon i {
+            font-size: 3rem;
+            color: var(--button-text);
+        }
+
+        .success-title {
+            color: var(--title-color);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .success-text {
+            color: var(--text-color);
+            font-size: 1rem;
+            margin-bottom: 24px;
         }
 
         /* Footer Styles */
@@ -157,7 +426,7 @@
             background-color: var(--first-color-lighten) !important;
         }
 
-        /* Mobile responsiveness for buttons */
+        /* Mobile responsiveness */
         @media screen and (max-width: 768px) {
             .theme-btn,
             .accessibility-btn {
@@ -165,6 +434,19 @@
                 height: 35px;
                 font-size: 1rem;
                 margin-right: 10px;
+            }
+
+            .modal-content {
+                padding: 24px;
+            }
+
+            .modal-title {
+                font-size: 1.25rem;
+            }
+
+            .join-btn {
+                padding: 10px 24px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -217,19 +499,15 @@
                 </ul>
             </div>
 
-            <!-- Dark Mode & Accessibility Toggle -->
             <div style="display: flex; align-items: center;">
-                <!-- Dark Mode Toggle Button -->
                 <button class="theme-btn" id="theme-toggle" title="Toggle Dark Mode">
                     <i class='bx bx-moon'></i>
                 </button>
 
-                <!-- Accessibility Toggle Button -->
                 <button class="accessibility-btn" id="accessibility-toggle" title="Toggle High Contrast">
                     <i class='bx bx-low-vision'></i>
                 </button>
 
-                <!-- Profile Dropdown -->
                 <div class="profile-dropdown">
                     <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Profile" class="nav__img" id="profile-toggle">
                     <div class="dropdown-menu" id="dropdown-menu">
@@ -248,92 +526,157 @@
     </header>
 
     <div class="card-list">
-        <a href="#" class="card-item">
+        <div class="card-item">
             <img src="./src/images/ev1.jpg" alt="Card Image">
-            
             <h3>Beach Cleanup Drive – Coastal Conservation</h3>
             <p>Join hands to clear 3 km of coastline, raise awareness about plastic waste and help restore natural habitat.</p>
-            <div class="arrow">
-                <i class="fas fa-arrow-right card-icon"></i>
-            </div>
-        </a>
-        <a href="#" class="card-item">
+            <button class="join-btn" data-event="Beach Cleanup Drive">
+                <i class='bx bx-user-plus'></i>
+                Join Event
+            </button>
+        </div>
+
+        <div class="card-item">
             <img src="./src/images/ev2.jpg" alt="Card Image">
-            
             <h3>Tree Plantation Campaign – Green Our Neighbourhood</h3>
             <p>Help plant 300+ young trees in the city-edge park, contributing to cleaner air and greener spaces for all.</p>
-            <div class="arrow">
-                <i class="fas fa-arrow-right card-icon"></i>
-            </div>
-        </a>
-        <a href="#" class="card-item">
+            <button class="join-btn" data-event="Tree Plantation Campaign">
+                <i class='bx bx-user-plus'></i>
+                Join Event
+            </button>
+        </div>
+
+        <div class="card-item">
             <img src="./src/images/ev3.jpg" alt="Card Image">
-        
             <h3>Blood Donation Camp – Life Gives Life</h3>
             <p>Support our campaign to collect 150+ units of blood; your time can save multiple lives today.</p>
-            <div class="arrow">
-                <i class="fas fa-arrow-right card-icon"></i>
-            </div>
-        </a>
+            <button class="join-btn" data-event="Blood Donation Camp">
+                <i class='bx bx-user-plus'></i>
+                Join Event
+            </button>
+        </div>
 
-        <a href="#" class="card-item">
+        <div class="card-item">
             <img src="./src/images/ev4.jpg" alt="Card Image">
-            
             <h3>Rural Education Outreach – Teach & Empower</h3>
             <p>Empower children in underserved villages by teaching basic English and digital skills for a brighter future.</p>
-            <div class="arrow">
-                <i class="fas fa-arrow-right card-icon"></i>
-            </div>
-        </a>
-        <a href="#" class="card-item">
+            <button class="join-btn" data-event="Rural Education Outreach">
+                <i class='bx bx-user-plus'></i>
+                Join Event
+            </button>
+        </div>
+
+        <div class="card-item">
             <img src="./src/images/ev5.jpg" alt="Card Image">
-            
             <h3>Food Donation Drive – Share a Meal</h3>
             <p>Distribute 500+ meal packs to families in need this festive season — you can brighten many lives in just one afternoon.</p>
-            <div class="arrow">
-                <i class="fas fa-arrow-right card-icon"></i>
-            </div>
-        </a>
-        <a href="#" class="card-item">
+            <button class="join-btn" data-event="Food Donation Drive">
+                <i class='bx bx-user-plus'></i>
+                Join Event
+            </button>
+        </div>
+
+        <div class="card-item">
             <img src="./src/images/ev6.jpg" alt="Card Image">
-            
             <h3>Virtual Mentoring Session – Online Volunteers</h3>
             <p>Join our virtual mentoring program: spend 1-2 hours with a student online and help shape their future from anywhere.</p>
-            <div class="arrow">
-                <i class="fas fa-arrow-right card-icon"></i>
-            </div>
-        </a>
+            <button class="join-btn" data-event="Virtual Mentoring Session">
+                <i class='bx bx-user-plus'></i>
+                Join Event
+            </button>
+        </div>
 
-        <a href="#" class="card-item">
+        <div class="card-item">
             <img src="./src/images/ev7.jpg" alt="Card Image">
-            
             <h3>Community Garden Revitalization</h3>
             <p>Help greenify the city by creating eco-friendly gardens and providing free, fresh produce for underprivileged families.</p>
-            <div class="arrow">
-                <i class="fas fa-arrow-right card-icon"></i>
-            </div>
-        </a>
-        <a href="#" class="card-item">
+            <button class="join-btn" data-event="Community Garden Revitalization">
+                <i class='bx bx-user-plus'></i>
+                Join Event
+            </button>
+        </div>
+
+        <div class="card-item">
             <img src="./src/images/ev8.jpg" alt="Card Image">
-            
             <h3>School Renovation Drive</h3>
             <p>Bring color and comfort to classrooms—volunteer your time to improve education spaces for rural students.</p>
-            <div class="arrow">
-                <i class="fas fa-arrow-right card-icon"></i>
-            </div>
-        </a>
-        <a href="#" class="card-item">
+            <button class="join-btn" data-event="School Renovation Drive">
+                <i class='bx bx-user-plus'></i>
+                Join Event
+            </button>
+        </div>
+
+        <div class="card-item">
             <img src="./src/images/ev9.jpg" alt="Card Image">
-            
             <h3>Elderly Care Visit – "Moments of Joy"</h3>
             <p>Share your time and heart—bring smiles and companionship to our beloved elders.</p>
-            <div class="arrow">
-                <i class="fas fa-arrow-right card-icon"></i>
-            </div>
-        </a>
+            <button class="join-btn" data-event="Elderly Care Visit">
+                <i class='bx bx-user-plus'></i>
+                Join Event
+            </button>
+        </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-event-title">Join Event</h2>
+                <button class="modal-close" id="modal-close">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+
+            <form id="join-form">
+                <div class="form-group">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" class="form-input" name="fullname" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" class="form-input" name="email" required placeholder="your.email@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Phone Number *</label>
+                    <input type="tel" class="form-input" name="phone" required placeholder="+91 XXXXX XXXXX">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Age *</label>
+                    <input type="number" class="form-input" name="age" required min="15" max="100" placeholder="Enter your age">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Previous Volunteer Experience</label>
+                    <select class="form-select" name="experience">
+                        <option value="none">No Experience</option>
+                        <option value="beginner">Beginner (1-2 events)</option>
+                        <option value="intermediate">Intermediate (3-5 events)</option>
+                        <option value="experienced">Experienced (6+ events)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Why do you want to join this event?</label>
+                    <textarea class="form-textarea" name="reason" placeholder="Tell us what motivates you..."></textarea>
+                </div>
+
+                <button type="submit" class="form-submit">Submit Registration</button>
+            </form>
+
+            <div class="success-message" id="success-message">
+                <div class="success-icon">
+                    <i class='bx bx-check'></i>
+                </div>
+                <h3 class="success-title">Successfully Registered!</h3>
+                <p class="success-text">Thank you for joining our event. We'll send you confirmation details via email.</p>
+                <button class="form-submit" id="close-success">Close</button>
+            </div>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="footer__container container">
             <div class="footer__content">
@@ -350,7 +693,6 @@
                     <p class="footer__description">
                         Join hands with MITVOL to build communities, empower change, and create a better tomorrow through volunteering.
                     </p>
-
                 </div>
 
                 <div class="footer__links">
@@ -393,7 +735,7 @@
         </div>
     </footer>
 
-    <script src ="js\script.js"></script>
+    <script src="js\script.js"></script>
     <script>
         // Hamburger Menu Toggle
         const navToggle = document.getElementById('nav-toggle');
@@ -401,7 +743,6 @@
 
         navToggle.addEventListener('click', () => {
             navMenu.classList.toggle('show-menu');
-            // Change icon
             const icon = navToggle.querySelector('i');
             if (navMenu.classList.contains('show-menu')) {
                 icon.classList.remove('bx-menu');
@@ -412,7 +753,6 @@
             }
         });
 
-        // Close menu when clicking on a link
         const navLinks = document.querySelectorAll('.nav__link');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -420,8 +760,6 @@
                 const icon = navToggle.querySelector('i');
                 icon.classList.remove('bx-x');
                 icon.classList.add('bx-menu');
-                
-                // Update active link
                 navLinks.forEach(l => l.classList.remove('active-link'));
                 link.classList.add('active-link');
             });
@@ -436,40 +774,33 @@
             dropdownMenu.classList.toggle('show');
         });
 
-        // Close dropdown when clicking outside
         document.addEventListener('click', (e) => {
             if (!profileToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
                 dropdownMenu.classList.remove('show');
             }
         });
 
-        // Close dropdown when clicking a menu item
         document.querySelectorAll('.dropdown-item').forEach(item => {
             item.addEventListener('click', () => {
                 dropdownMenu.classList.remove('show');
             });
         });
 
-        // ===== DARK MODE FUNCTIONALITY =====
+        // Dark Mode
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = themeToggle.querySelector('i');
-
-        // Load saved theme preference
         const savedTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
         updateThemeIcon(savedTheme);
 
-        // Toggle theme on button click
         themeToggle.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             updateThemeIcon(newTheme);
         });
 
-        // Update icon based on theme
         function updateThemeIcon(theme) {
             if (theme === 'dark') {
                 themeIcon.classList.remove('bx-moon');
@@ -480,20 +811,112 @@
             }
         }
 
-        // ===== ACCESSIBILITY (HIGH CONTRAST) FUNCTIONALITY =====
+        // Accessibility
         const accessibilityToggle = document.getElementById('accessibility-toggle');
-
-        // Load saved contrast preference
         const savedContrast = localStorage.getItem('contrast') || 'normal';
         document.documentElement.setAttribute('data-contrast', savedContrast);
 
-        // Toggle contrast on button click
         accessibilityToggle.addEventListener('click', () => {
             const currentContrast = document.documentElement.getAttribute('data-contrast');
             const newContrast = currentContrast === 'high' ? 'normal' : 'high';
-            
             document.documentElement.setAttribute('data-contrast', newContrast);
             localStorage.setItem('contrast', newContrast);
+        });
+
+        // Modal Functionality
+        const modal = document.getElementById('modal');
+        const modalClose = document.getElementById('modal-close');
+        const joinForm = document.getElementById('join-form');
+        const successMessage = document.getElementById('success-message');
+        const closeSuccess = document.getElementById('close-success');
+        const modalEventTitle = document.getElementById('modal-event-title');
+        let currentEvent = '';
+
+        // Open modal when Join button is clicked
+        document.querySelectorAll('.join-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                currentEvent = btn.getAttribute('data-event');
+                modalEventTitle.textContent = `Join ${currentEvent}`;
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close modal
+        function closeModal() {
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+            joinForm.style.display = 'block';
+            successMessage.classList.remove('show');
+            joinForm.reset();
+        }
+
+        modalClose.addEventListener('click', closeModal);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Handle form submission
+        joinForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(joinForm);
+            const data = {
+                event: currentEvent,
+                fullname: formData.get('fullname'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                age: formData.get('age'),
+                experience: formData.get('experience'),
+                reason: formData.get('reason')
+            };
+
+            // Log the data (in production, send to server)
+            console.log('Event Registration:', data);
+
+            // Here you can add AJAX call to send data to your PHP backend
+            // Example:
+            /*
+            fetch('submit_registration.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log('Success:', result);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+            */
+
+            // Show success message
+            joinForm.style.display = 'none';
+            successMessage.classList.add('show');
+        });
+
+        // Close success message
+        closeSuccess.addEventListener('click', closeModal);
+
+        // Prevent modal content clicks from closing modal
+        document.querySelector('.modal-content').addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Escape key to close modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                closeModal();
+            }
         });
     </script>
 </body>
