@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volunteers</title>
-    <link rel="stylesheet" href="./dist/output.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <link rel="stylesheet" href="./dist/output.css">
+
+  <!-- Option 1: Fast Meta Redirect (works even if JS is off) -->
+  <meta http-equiv="refresh" content="0; url=index.php" />
+  
+  <!-- Option 2 (Backup): JS Redirect -->
+  <script>
+    // Redirect after a short delay to ensure script loads fully
+    window.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        window.location.href = "index.php";
+      }, 100); // 100ms delay
+    });
+  </script>
 </head>
-<body>
-    <h1 class="p-6 bg-amber-900 border-amber-200 ">Hello World</h1>
-    <button type="button" onclick="onwork()" style="display:inline-block;padding:0.5rem 1rem;background:#2563eb;color:#fff;border-radius:0.375rem;border:none;cursor:pointer;font-size:1rem">Hello</button>
-
-
-
-
-
-
-    <script src="src/script.js"></script>
+<body class="bg-amber-900 text-white flex flex-col items-center justify-center h-screen">
+  <h1 class="text-3xl font-bold mb-6">Redirecting you to VolunTribe...</h1>
+  <p class="text-lg text-amber-200">If you are not redirected automatically, <a href="index.php" class="underline text-blue-400">click here</a>.</p>
 </body>
 </html>
