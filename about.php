@@ -770,19 +770,19 @@
                     <div class="team-member">
                         <h4>Harshit Choudhary</h4>
                         <p>Developer</p>
-                        <p class="bio">Crealsdkfj laskdjflaskjdfl kjlaskjdflaksjdf;lakjsd</p>
+                        <p class="bio">Developed Login, Register, Backend, Event Page.</p>
                     </div>
 
                     <div class="team-member">
                         <h4>Akshat Jain</h4>
                         <p>Developer</p>
-                        <p class="bio">Building bridges between volunteers and organizations.</p>
+                        <p class="bio">Developed Home, Gallery, Contact, Accessibility Features.</p>
                     </div>
 
                     <div class="team-member">
                        <h4>Anjali</h4>
                         <p>Developer</p>
-                        <p class="bio">Creating seamless volunteer experiences through technology.</p>
+                        <p class="bio">Developed About, Profile, Dark Mode implementation.</p>
                     </div>
 
                    
