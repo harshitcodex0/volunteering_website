@@ -101,6 +101,10 @@ if (!isset($_SESSION['user_id'])) {
         color: var(--text-color) !important;
     }
 
+    .nav__toggle {
+        color: var(--title-color) !important;
+    }
+
     .nav__menu {
         background-color: var(--container-color) !important;
     }
@@ -227,6 +231,16 @@ if (!isset($_SESSION['user_id'])) {
             margin-right: 10px;
         }
     }
+
+    /* Profile button styling */
+    .profile-btn {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
   </style>
 
   <!-- Custom CSS -->
@@ -297,14 +311,16 @@ if (!isset($_SESSION['user_id'])) {
 
                 <!-- Profile Dropdown -->
                 <div class="profile-dropdown">
-                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Profile" class="nav__img" id="profile-toggle">
-                    <div class="dropdown-menu" id="dropdown-menu">
-                        <a href="profile.php" class="dropdown-item">
-                            <i class='bx bx-user'></i>
+                    <button class="profile-btn" id="profile-toggle" aria-label="Open profile menu" aria-expanded="false">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="" class="nav__img">
+                    </button>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <a href="profile.php" class="dropdown-item" role="menuitem">
+                            <i class='bx bx-user' aria-hidden="true"></i>
                             <span>Profile</span>
                         </a>
-                        <a href="#logout" class="dropdown-item">
-                            <i class='bx bx-log-out'></i>
+                        <a href="#logout" class="dropdown-item" role="menuitem">
+                            <i class='bx bx-log-out' aria-hidden="true"></i>
                             <span>Logout</span>
                         </a>
                     </div>
@@ -320,31 +336,31 @@ if (!isset($_SESSION['user_id'])) {
     <!-- Responsive Image Grid -->
     <div class="gallery-grid">
         <div class="gallery-item">
-            <img class="gallery-img" src="./src/images/img1.jpg" alt="gallery-photo" />
+            <img class="gallery-img" src="./src/images/img1.jpg" alt="Volunteers working together in team building activity" />
         </div>
         <div class="gallery-item">
-            <img class="gallery-img" src="./src/images/img2.jpg" alt="gallery-photo" />
+            <img class="gallery-img" src="./src/images/img2.jpg" alt="Community marathon event with participants" />
         </div>
         <div class="gallery-item">
-            <img class="gallery-img" src="./src/images/img3.jpg" alt="gallery-photo" />
+            <img class="gallery-img" src="./src/images/img3.jpg" alt="Volunteers planting trees in community garden" />
         </div>
         <div class="gallery-item">
-            <img class="gallery-img" src="./src/images/img4.jpg" alt="gallery-photo" />
+            <img class="gallery-img" src="./src/images/img4.jpg" alt="Group of volunteers engaged in community service" />
         </div>
         <div class="gallery-item">
-            <img class="gallery-img" src="./src/images/img5.jpg" alt="gallery-photo" />
+            <img class="gallery-img" src="./src/images/img5.jpg" alt="Volunteers participating in outdoor cleanup activity" />
         </div>
         <div class="gallery-item">
-            <img class="gallery-img" src="./src/images/img6.jpeg" alt="gallery-photo" />
+            <img class="gallery-img" src="./src/images/img6.jpeg" alt="Team collaboration during volunteering event" />
         </div>
         <div class="gallery-item">
-            <img class="gallery-img" src="./src/images/img7.png" alt="gallery-photo" />
+            <img class="gallery-img" src="./src/images/img7.png" alt="Coding workshop with volunteer instructors" />
         </div>
         <div class="gallery-item">
-            <img class="gallery-img" src="./src/images/img8.jpeg" alt="gallery-photo" />
+            <img class="gallery-img" src="./src/images/img8.jpeg" alt="Volunteers group photo at community event" />
         </div>
         <div class="gallery-item">
-            <img class="gallery-img" src="./src/images/img9.png" alt="gallery-photo" />
+            <img class="gallery-img" src="./src/images/img9.png" alt="Student volunteers at educational outreach program" />
         </div>
     </div>
 </main>
@@ -392,7 +408,7 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="footer__map">
                         <h3 class="footer__title">Our Location</h3>
                         <div class="map-container">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7763.927438756527!2d74.78482487609999!3d13.352532100000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbca4a7d2c4edb7%3A0x8d588d4fb81d861f!2sManipal%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1761484628724!5m2!1sen!2sin" width="300" height="180" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7763.927438756527!2d74.78482487609999!3d13.352532100000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbca4a7d2c4edb7%3A0x8d588d4fb81d861f!2sManipal%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1761484628724!5m2!1sen!2sin" width="300" height="180" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Google Maps showing Manipal Institute of Technology location"></iframe>
                         </div>
                     </div>
                 </div>
@@ -401,9 +417,9 @@ if (!isset($_SESSION['user_id'])) {
             <div class="footer__bottom">
                 <p class="footer__copyright">© Copyright 2025 VolunTribe. All rights reserved.</p>
                 <div class="footer__social">
-                    <a href="#" class="footer__social-link"><i class='bx bxl-twitter'></i></a>
-                    <a href="#" class="footer__social-link"><i class='bx bxl-instagram'></i></a>
-                    <a href="#" class="footer__social-link"><i class='bx bxl-facebook'></i></a>
+                    <a href="#" class="footer__social-link" aria-label="Follow us on Twitter"><i class='bx bxl-twitter'></i></a>
+                    <a href="#" class="footer__social-link" aria-label="Follow us on Instagram"><i class='bx bxl-instagram'></i></a>
+                    <a href="#" class="footer__social-link" aria-label="Follow us on Facebook"><i class='bx bxl-facebook'></i></a>
                 </div>
             </div>
         </div>
@@ -450,13 +466,15 @@ if (!isset($_SESSION['user_id'])) {
 
         profileToggle.addEventListener('click', (e) => {
             e.stopPropagation();
-            dropdownMenu.classList.toggle('show');
+            const isOpen = dropdownMenu.classList.toggle('show');
+            profileToggle.setAttribute('aria-expanded', isOpen);
         });
 
         // Close dropdown when clicking outside
         document.addEventListener('click', (e) => {
             if (!profileToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
                 dropdownMenu.classList.remove('show');
+                profileToggle.setAttribute('aria-expanded', 'false');
             }
         });
 
@@ -464,6 +482,7 @@ if (!isset($_SESSION['user_id'])) {
         document.querySelectorAll('.dropdown-item').forEach(item => {
             item.addEventListener('click', () => {
                 dropdownMenu.classList.remove('show');
+                profileToggle.setAttribute('aria-expanded', 'false');
             });
         });
 

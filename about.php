@@ -663,7 +663,7 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 <body>
     <header class="header" id="header">
-        <nav class="nav container"> 
+        <nav class="nav container" aria-label="Main navigation"> 
             <div class="nav__toggle" id="nav-toggle">
                 <i class='bx bx-menu'></i>
             </div>
@@ -710,17 +710,19 @@ if (!isset($_SESSION['user_id'])) {
             </div>
 
             <div style="display: flex; align-items: center;">
-                <button class="theme-btn" id="theme-toggle" title="Toggle Dark Mode">
-                    <i class='bx bx-moon'></i>
+                <button class="theme-btn" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+                    <i class='bx bx-moon' aria-hidden="true"></i>
                 </button>
 
-                <button class="accessibility-btn" id="accessibility-toggle" title="Toggle High Contrast">
-                    <i class='bx bx-low-vision'></i>
+                <button class="accessibility-btn" id="accessibility-toggle" aria-label="Toggle high contrast mode" aria-pressed="false">
+                    <i class='bx bx-low-vision' aria-hidden="true"></i>
                 </button>
 
                 <div class="profile-dropdown">
-                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Profile" class="nav__img" id="profile-toggle">
-                    <div class="dropdown-menu" id="dropdown-menu">
+                    <button id="profile-toggle" aria-label="User profile menu" aria-expanded="false" aria-haspopup="true" style="background: none; border: none; cursor: pointer; padding: 0;">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="User profile" class="nav__img">
+                    </button>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu" aria-labelledby="profile-toggle">
                         <a href="profile.php" class="dropdown-item">
                             <i class='bx bx-user'></i>
                             <span>Profile</span>

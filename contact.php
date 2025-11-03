@@ -17,6 +17,19 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="css\about.css">
     <link rel="stylesheet" href="css\style.css">
     <style>
+        /* Accessibility - Visually Hidden */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
         /* Dark Mode Variables */
         :root {
             --body-color: #ffffff;
@@ -382,7 +395,7 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 <body>
     <header class="header" id="header">
-        <nav class="nav container"> 
+        <nav class="nav container" role="navigation" aria-label="Main navigation"> 
             <div class="nav__toggle" id="nav-toggle">
                 <i class='bx bx-menu'></i>
             </div>
@@ -393,35 +406,35 @@ if (!isset($_SESSION['user_id'])) {
                 <ul class="nav__list">
                     <li class="nav__item">
                         <a href="index.php" class="nav__link">
-                            <i class='bx bx-home-alt nav__icon'></i>
+                            <i class='bx bx-home-alt nav__icon' aria-hidden="true"></i>
                             <span class="nav__name">Home</span>
                         </a>
                     </li>
                     
                     <li class="nav__item">
                         <a href="about.php" class="nav__link">
-                            <i class='bx bx-user nav__icon'></i>
+                            <i class='bx bx-user nav__icon' aria-hidden="true"></i>
                             <span class="nav__name">About</span>
                         </a>
                     </li>
 
                     <li class="nav__item">
                         <a href="event.php" class="nav__link">
-                            <i class='bx bx-book-alt nav__icon'></i>
+                            <i class='bx bx-book-alt nav__icon' aria-hidden="true"></i>
                             <span class="nav__name">Events</span>
                         </a>
                     </li>
 
                     <li class="nav__item">
                         <a href="gallery.php" class="nav__link">
-                            <i class='bx bx-briefcase-alt nav__icon'></i>
+                            <i class='bx bx-briefcase-alt nav__icon' aria-hidden="true"></i>
                             <span class="nav__name">Gallery</span>
                         </a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="contact.php" class="nav__link">
-                            <i class='bx bx-message-square-detail nav__icon'></i>
+                        <a href="contact.php" class="nav__link" aria-current="page">
+                            <i class='bx bx-message-square-detail nav__icon' aria-hidden="true"></i>
                             <span class="nav__name">Contact Us</span>
                         </a>
                     </li>
@@ -442,15 +455,15 @@ if (!isset($_SESSION['user_id'])) {
 
                 <!-- Profile Dropdown -->
                 <div class="profile-dropdown">
-                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Profile" class="nav__img" id="profile-toggle">
-                    <div class="dropdown-menu" id="dropdown-menu">
-                        <a href="profile.php" class="dropdown-item">
-                            <i class='bx bx-user'></i>
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="User profile picture" class="nav__img" id="profile-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu" aria-label="Profile menu">
+                        <a href="profile.php" class="dropdown-item" role="menuitem">
+                            <i class='bx bx-user' aria-hidden="true"></i>
                             <span>Profile</span>
                         </a>
                         
-                        <a href="logout.php" class="dropdown-item">
-                            <i class='bx bx-log-out'></i>
+                        <a href="logout.php" class="dropdown-item" role="menuitem">
+                            <i class='bx bx-log-out' aria-hidden="true"></i>
                             <span>Logout</span>
                         </a>
                     </div>
@@ -460,6 +473,7 @@ if (!isset($_SESSION['user_id'])) {
     </header>
 
     <!-- Contact Section -->
+    <main>
     <section class="contact-section">
         <div class="contact-container">
             <div class="contact-grid">
@@ -472,16 +486,16 @@ if (!isset($_SESSION['user_id'])) {
                     <h1 class="contact-title">Contact Us</h1>
                     <div class="contact-info-box">
                         <div class="contact-info">
-                            <a href="tel:+4706011911" class="contact-info-item">
-                                <i class='bx bx-phone'></i>
+                            <a href="tel:+4706011911" class="contact-info-item" aria-label="Call us at +470-601-1911">
+                                <i class='bx bx-phone' aria-hidden="true"></i>
                                 <h5>+470-601-1911</h5>
                             </a>
-                            <a href="mailto:voluntribe@gmail.com" class="contact-info-item">
-                                <i class='bx bx-envelope'></i>
+                            <a href="mailto:voluntribe@gmail.com" class="contact-info-item" aria-label="Email us at voluntribe@gmail.com">
+                                <i class='bx bx-envelope' aria-hidden="true"></i>
                                 <h5>voluntribe@gmail.com</h5>
                             </a>
                             <div class="contact-info-item">
-                                <i class='bx bx-map'></i>
+                                <i class='bx bx-map' aria-hidden="true"></i>
                                 <h5>MIT Campus, Manipal Institute of Technology, Karnataka, India</h5>
                             </div>
                         </div>
@@ -493,6 +507,7 @@ if (!isset($_SESSION['user_id'])) {
                     <h2 class="contact-form-title">Send Us A Message</h2>
 
                     <form id="contact-form" method="POST" action="https://formspree.io/f/mrbojggn" class="contact-form">
+                        <label for="name" class="visually-hidden">Name</label>
                         <input 
                             type="text" 
                             name="name" 
@@ -502,17 +517,21 @@ if (!isset($_SESSION['user_id'])) {
                             class="contact-input"
                             pattern="[A-Za-z\s]+"
                             title="Name should only contain letters and spaces"
+                            aria-required="true"
                         />
 
+                        <label for="email" class="visually-hidden">Email</label>
                         <input 
                             type="email" 
                             name="email" 
                             id="email"
                             required 
                             placeholder="Email" 
-                            class="contact-input" 
+                            class="contact-input"
+                            aria-required="true"
                         />
 
+                        <label for="phone" class="visually-hidden">Phone</label>
                         <input 
                             type="tel" 
                             name="phone" 
@@ -524,8 +543,8 @@ if (!isset($_SESSION['user_id'])) {
                             title="Phone number must be exactly 10 digits"
                         />
 
-                        <div class="contact-radio-group">
-                            <label class="contact-radio-label">Preferred method of communication</label>
+                        <div class="contact-radio-group" role="group" aria-labelledby="contact-method-label">
+                            <label id="contact-method-label" class="contact-radio-label">Preferred method of communication</label>
                             <div class="contact-radio-options">
                                 <label class="contact-radio-option">
                                     <input type="radio" name="contact_method" value="Email">
@@ -538,6 +557,7 @@ if (!isset($_SESSION['user_id'])) {
                             </div>
                         </div>
 
+                        <label for="message" class="visually-hidden">Message</label>
                         <textarea 
                             name="message" 
                             id="message"
@@ -552,6 +572,7 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -596,7 +617,7 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="footer__map">
                         <h3 class="footer__title">Our Location</h3>
                         <div class="map-container">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7763.927438756527!2d74.78482487609999!3d13.352532100000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbca4a7d2c4edb7%3A0x8d588d4fb81d861f!2sManipal%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1761484628724!5m2!1sen!2sin" width="300" height="180" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7763.927438756527!2d74.78482487609999!3d13.352532100000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbca4a7d2c4edb7%3A0x8d588d4fb81d861f!2sManipal%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1761484628724!5m2!1sen!2sin" width="300" height="180" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Location map of Manipal Institute of Technology"></iframe>
                         </div>
                     </div>
                 </div>
@@ -604,10 +625,10 @@ if (!isset($_SESSION['user_id'])) {
 
             <div class="footer__bottom">
                 <p class="footer__copyright">© Copyright 2025 VolunTribe. All rights reserved.</p>
-                <div class="footer__social">
-                    <a href="#" class="footer__social-link"><i class='bx bxl-twitter'></i></a>
-                    <a href="#" class="footer__social-link"><i class='bx bxl-instagram'></i></a>
-                    <a href="#" class="footer__social-link"><i class='bx bxl-facebook'></i></a>
+                <div class="footer__social" aria-label="Social media links">
+                    <a href="https://twitter.com/voluntribe" class="footer__social-link" aria-label="Twitter"><i class='bx bxl-twitter' aria-hidden="true"></i></a>
+                    <a href="https://instagram.com/voluntribe" class="footer__social-link" aria-label="Instagram"><i class='bx bxl-instagram' aria-hidden="true"></i></a>
+                    <a href="https://facebook.com/voluntribe" class="footer__social-link" aria-label="Facebook"><i class='bx bxl-facebook' aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -651,19 +672,22 @@ if (!isset($_SESSION['user_id'])) {
 
         profileToggle.addEventListener('click', (e) => {
             e.stopPropagation();
-            dropdownMenu.classList.toggle('show');
+            const isExpanded = dropdownMenu.classList.toggle('show');
+            profileToggle.setAttribute('aria-expanded', isExpanded);
         });
 
         // Close dropdown when clicking outside
         document.addEventListener('click', (e) => {
             if (!profileToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
                 dropdownMenu.classList.remove('show');
+                profileToggle.setAttribute('aria-expanded', 'false');
             }
         });
 
         document.querySelectorAll('.dropdown-item').forEach(item => {
             item.addEventListener('click', () => {
                 dropdownMenu.classList.remove('show');
+                profileToggle.setAttribute('aria-expanded', 'false');
             });
         });
 

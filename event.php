@@ -112,6 +112,10 @@ if (!isset($_SESSION['user_id'])) {
             color: var(--text-color) !important;
         }
 
+        .nav__toggle {
+            color: var(--title-color) !important;
+        }
+
         .nav__menu {
             background-color: var(--container-color) !important;
         }
@@ -119,6 +123,7 @@ if (!isset($_SESSION['user_id'])) {
         /* Card List Styles */
         .card-list {
             background-color: var(--body-color) !important;
+            padding-top: 100px !important;
         }
 
         .card-item {
@@ -461,7 +466,7 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 <body>
     <header class="header" id="header">
-        <nav class="nav container"> 
+        <nav class="nav container" role="navigation" aria-label="Main navigation"> 
             <div class="nav__toggle" id="nav-toggle">
                 <i class='bx bx-menu'></i>
             </div>
@@ -469,38 +474,38 @@ if (!isset($_SESSION['user_id'])) {
             <a href="index.php" class="nav__logo">VolunTribe</a>
 
             <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item">
-                        <a href="index.php" class="nav__link">
-                            <i class='bx bx-home-alt nav__icon'></i>
+                <ul class="nav__list" role="menubar">
+                    <li class="nav__item" role="none">
+                        <a href="index.php" class="nav__link" role="menuitem">
+                            <i class='bx bx-home-alt nav__icon' aria-hidden="true"></i>
                             <span class="nav__name">Home</span>
                         </a>
                     </li>
                     
-                    <li class="nav__item">
-                        <a href="about.php" class="nav__link">
-                            <i class='bx bx-user nav__icon'></i>
+                    <li class="nav__item" role="none">
+                        <a href="about.php" class="nav__link" role="menuitem">
+                            <i class='bx bx-user nav__icon' aria-hidden="true"></i>
                             <span class="nav__name">About</span>
                         </a>
                     </li>
 
-                    <li class="nav__item">
-                        <a href="event.php" class="nav__link">
-                            <i class='bx bx-book-alt nav__icon'></i>
+                    <li class="nav__item" role="none">
+                        <a href="event.php" class="nav__link" role="menuitem" aria-current="page">
+                            <i class='bx bx-book-alt nav__icon' aria-hidden="true"></i>
                             <span class="nav__name">Events</span>
                         </a>
                     </li>
 
-                    <li class="nav__item">
-                        <a href="gallery.php" class="nav__link">
-                            <i class='bx bx-briefcase-alt nav__icon'></i>
+                    <li class="nav__item" role="none">
+                        <a href="gallery.php" class="nav__link" role="menuitem">
+                            <i class='bx bx-briefcase-alt nav__icon' aria-hidden="true"></i>
                             <span class="nav__name">Gallery</span>
                         </a>
                     </li>
 
-                    <li class="nav__item">
-                        <a href="contact.php" class="nav__link">
-                            <i class='bx bx-message-square-detail nav__icon'></i>
+                    <li class="nav__item" role="none">
+                        <a href="contact.php" class="nav__link" role="menuitem">
+                            <i class='bx bx-message-square-detail nav__icon' aria-hidden="true"></i>
                             <span class="nav__name">Contact Us</span>
                         </a>
                     </li>
@@ -508,23 +513,23 @@ if (!isset($_SESSION['user_id'])) {
             </div>
 
             <div style="display: flex; align-items: center;">
-                <button class="theme-btn" id="theme-toggle" title="Toggle Dark Mode">
-                    <i class='bx bx-moon'></i>
+                <button class="theme-btn" id="theme-toggle" title="Toggle Dark Mode" aria-label="Toggle dark mode">
+                    <i class='bx bx-moon' aria-hidden="true"></i>
                 </button>
 
-                <button class="accessibility-btn" id="accessibility-toggle" title="Toggle High Contrast">
-                    <i class='bx bx-low-vision'></i>
+                <button class="accessibility-btn" id="accessibility-toggle" title="Toggle High Contrast" aria-label="Toggle high contrast mode">
+                    <i class='bx bx-low-vision' aria-hidden="true"></i>
                 </button>
 
                 <div class="profile-dropdown">
-                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="Profile" class="nav__img" id="profile-toggle">
-                    <div class="dropdown-menu" id="dropdown-menu">
-                        <a href="profile.php" class="dropdown-item">
-                            <i class='bx bx-user'></i>
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop" alt="User profile picture" class="nav__img" id="profile-toggle" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu" aria-label="Profile menu">
+                        <a href="profile.php" class="dropdown-item" role="menuitem">
+                            <i class='bx bx-user' aria-hidden="true"></i>
                             <span>Profile</span>
                         </a>
-                        <a href="logout.php" class="dropdown-item">
-                            <i class='bx bx-log-out'></i>
+                        <a href="logout.php" class="dropdown-item" role="menuitem">
+                            <i class='bx bx-log-out' aria-hidden="true"></i>
                             <span>Logout</span>
                         </a>
                     </div>
@@ -533,132 +538,132 @@ if (!isset($_SESSION['user_id'])) {
         </nav>
     </header>
 
-    <div class="card-list">
-        <div class="card-item">
+    <main class="card-list" role="main">
+        <article class="card-item">
             <img src="./src/images/ev1.jpg" alt="Beach Cleanup Drive – Coastal Conservation">
             <h3>Beach Cleanup Drive – Coastal Conservation</h3>
             <p>Join hands to clear 3 km of coastline, raise awareness about plastic waste and help restore natural habitat.</p>
-            <button class="join-btn" data-event="Beach Cleanup Drive">
-                <i class='bx bx-user-plus'></i>
+            <button class="join-btn" data-event="Beach Cleanup Drive" aria-label="Join Beach Cleanup Drive event">
+                <i class='bx bx-user-plus' aria-hidden="true"></i>
                 Join Event
             </button>
-        </div>
+        </article>
 
-        <div class="card-item">
+        <article class="card-item">
             <img src="./src/images/ev2.jpg" alt="Tree Plantation Campaign – Green Our Neighbourhood">
             <h3>Tree Plantation Campaign – Green Our Neighbourhood</h3>
             <p>Help plant 300+ young trees in the city-edge park, contributing to cleaner air and greener spaces for all.</p>
-            <button class="join-btn" data-event="Tree Plantation Campaign">
-                <i class='bx bx-user-plus'></i>
+            <button class="join-btn" data-event="Tree Plantation Campaign" aria-label="Join Tree Plantation Campaign event">
+                <i class='bx bx-user-plus' aria-hidden="true"></i>
                 Join Event
             </button>
-        </div>
+        </article>
 
-        <div class="card-item">
+        <article class="card-item">
             <img src="./src/images/ev3.jpg" alt="Blood Donation Camp – Life Gives Life">
             <h3>Blood Donation Camp – Life Gives Life</h3>
             <p>Support our campaign to collect 150+ units of blood; your time can save multiple lives today.</p>
-            <button class="join-btn" data-event="Blood Donation Camp">
-                <i class='bx bx-user-plus'></i>
+            <button class="join-btn" data-event="Blood Donation Camp" aria-label="Join Blood Donation Camp event">
+                <i class='bx bx-user-plus' aria-hidden="true"></i>
                 Join Event
             </button>
-        </div>
+        </article>
 
-        <div class="card-item">
+        <article class="card-item">
             <img src="./src/images/ev4.jpg" alt="Rural Education Outreach – Teach & Empower">
             <h3>Rural Education Outreach – Teach & Empower</h3>
             <p>Empower children in underserved villages by teaching basic English and digital skills for a brighter future.</p>
-            <button class="join-btn" data-event="Rural Education Outreach">
-                <i class='bx bx-user-plus'></i>
+            <button class="join-btn" data-event="Rural Education Outreach" aria-label="Join Rural Education Outreach event">
+                <i class='bx bx-user-plus' aria-hidden="true"></i>
                 Join Event
             </button>
-        </div>
+        </article>
 
-        <div class="card-item">
+        <article class="card-item">
             <img src="./src/images/ev5.jpg" alt="Food Donation Drive – Share a Meal">
             <h3>Food Donation Drive – Share a Meal</h3>
             <p>Distribute 500+ meal packs to families in need this festive season — you can brighten many lives in just one afternoon.</p>
-            <button class="join-btn" data-event="Food Donation Drive">
-                <i class='bx bx-user-plus'></i>
+            <button class="join-btn" data-event="Food Donation Drive" aria-label="Join Food Donation Drive event">
+                <i class='bx bx-user-plus' aria-hidden="true"></i>
                 Join Event
             </button>
-        </div>
+        </article>
 
-        <div class="card-item">
+        <article class="card-item">
             <img src="./src/images/ev6.jpg" alt="Virtual Mentoring Session – Online Volunteers">
             <h3>Virtual Mentoring Session – Online Volunteers</h3>
             <p>Join our virtual mentoring program: spend 1-2 hours with a student online and help shape their future from anywhere.</p>
-            <button class="join-btn" data-event="Virtual Mentoring Session">
-                <i class='bx bx-user-plus'></i>
+            <button class="join-btn" data-event="Virtual Mentoring Session" aria-label="Join Virtual Mentoring Session event">
+                <i class='bx bx-user-plus' aria-hidden="true"></i>
                 Join Event
             </button>
-        </div>
+        </article>
 
-        <div class="card-item">
+        <article class="card-item">
             <img src="./src/images/ev7.jpg" alt="Community Garden Revitalization">
             <h3>Community Garden Revitalization</h3>
             <p>Help greenify the city by creating eco-friendly gardens and providing free, fresh produce for underprivileged families.</p>
-            <button class="join-btn" data-event="Community Garden Revitalization">
-                <i class='bx bx-user-plus'></i>
+            <button class="join-btn" data-event="Community Garden Revitalization" aria-label="Join Community Garden Revitalization event">
+                <i class='bx bx-user-plus' aria-hidden="true"></i>
                 Join Event
             </button>
-        </div>
+        </article>
 
-        <div class="card-item">
+        <article class="card-item">
             <img src="./src/images/ev8.jpg" alt="School Renovation Drive">
             <h3>School Renovation Drive</h3>
             <p>Bring color and comfort to classrooms—volunteer your time to improve education spaces for rural students.</p>
-            <button class="join-btn" data-event="School Renovation Drive">
-                <i class='bx bx-user-plus'></i>
+            <button class="join-btn" data-event="School Renovation Drive" aria-label="Join School Renovation Drive event">
+                <i class='bx bx-user-plus' aria-hidden="true"></i>
                 Join Event
             </button>
-        </div>
+        </article>
 
-        <div class="card-item">
+        <article class="card-item">
             <img src="./src/images/ev9.jpg" alt="Elderly Care Visit – Moments of Joy">
             <h3>Elderly Care Visit – "Moments of Joy"</h3>
             <p>Share your time and heart—bring smiles and companionship to our beloved elders.</p>
-            <button class="join-btn" data-event="Elderly Care Visit">
-                <i class='bx bx-user-plus'></i>
+            <button class="join-btn" data-event="Elderly Care Visit" aria-label="Join Elderly Care Visit event">
+                <i class='bx bx-user-plus' aria-hidden="true"></i>
                 Join Event
             </button>
-        </div>
-    </div>
+        </article>
+    </main>
 
     <!-- Modal -->
-    <div class="modal-overlay" id="modal">
+    <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-event-title">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="modal-event-title">Join Event</h2>
-                <button class="modal-close" id="modal-close">
-                    <i class='bx bx-x'></i>
+                <button class="modal-close" id="modal-close" aria-label="Close modal">
+                    <i class='bx bx-x' aria-hidden="true"></i>
                 </button>
             </div>
 
-            <form id="join-form">
+            <form id="join-form" aria-labelledby="modal-event-title">
                 <div class="form-group">
-                    <label class="form-label">Full Name *</label>
-                    <input type="text" class="form-input" name="fullname" required placeholder="Enter your full name">
+                    <label class="form-label" for="fullname">Full Name *</label>
+                    <input type="text" class="form-input" id="fullname" name="fullname" required placeholder="Enter your full name" aria-required="true">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Email *</label>
-                    <input type="email" class="form-input" name="email" required placeholder="your.email@example.com">
+                    <label class="form-label" for="email">Email *</label>
+                    <input type="email" class="form-input" id="email" name="email" required placeholder="your.email@example.com" aria-required="true">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Phone Number *</label>
-                    <input type="tel" class="form-input" name="phone" required placeholder="+91 XXXXX XXXXX">
+                    <label class="form-label" for="phone">Phone Number *</label>
+                    <input type="tel" class="form-input" id="phone" name="phone" required placeholder="+91 XXXXX XXXXX" aria-required="true">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Age *</label>
-                    <input type="number" class="form-input" name="age" required min="15" max="100" placeholder="Enter your age">
+                    <label class="form-label" for="age">Age *</label>
+                    <input type="number" class="form-input" id="age" name="age" required min="15" max="100" placeholder="Enter your age" aria-required="true">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Previous Volunteer Experience</label>
-                    <select class="form-select" name="experience">
+                    <label class="form-label" for="experience">Previous Volunteer Experience</label>
+                    <select class="form-select" id="experience" name="experience" aria-label="Previous Volunteer Experience">
                         <option value="none">No Experience</option>
                         <option value="beginner">Beginner (1-2 events)</option>
                         <option value="intermediate">Intermediate (3-5 events)</option>
@@ -667,8 +672,8 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Why do you want to join this event?</label>
-                    <textarea class="form-textarea" name="reason" placeholder="Tell us what motivates you..."></textarea>
+                    <label class="form-label" for="reason">Why do you want to join this event?</label>
+                    <textarea class="form-textarea" id="reason" name="reason" placeholder="Tell us what motivates you..." aria-label="Why do you want to join this event?"></textarea>
                 </div>
 
                 <button type="submit" class="form-submit">Submit Registration</button>
@@ -726,7 +731,7 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="footer__map">
                         <h3 class="footer__title">Our Location</h3>
                         <div class="map-container">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7763.927438756527!2d74.78482487609999!3d13.352532100000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbca4a7d2c4edb7%3A0x8d588d4fb81d861f!2sManipal%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1761484628724!5m2!1sen!2sin" width="300" height="180" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7763.927438756527!2d74.78482487609999!3d13.352532100000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbca4a7d2c4edb7%3A0x8d588d4fb81d861f!2sManipal%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1761484628724!5m2!1sen!2sin" width="300" height="180" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Google Maps location of Manipal Institute of Technology"></iframe>
                         </div>
                     </div>
                 </div>
@@ -735,9 +740,9 @@ if (!isset($_SESSION['user_id'])) {
             <div class="footer__bottom">
                 <p class="footer__copyright">© Copyright 2025 VolunTribe. All rights reserved.</p>
                 <div class="footer__social">
-                    <a href="#" class="footer__social-link"><i class='bx bxl-twitter'></i></a>
-                    <a href="#" class="footer__social-link"><i class='bx bxl-instagram'></i></a>
-                    <a href="#" class="footer__social-link"><i class='bx bxl-facebook'></i></a>
+                    <a href="#" class="footer__social-link" aria-label="Follow us on Twitter"><i class='bx bxl-twitter' aria-hidden="true"></i></a>
+                    <a href="#" class="footer__social-link" aria-label="Follow us on Instagram"><i class='bx bxl-instagram' aria-hidden="true"></i></a>
+                    <a href="#" class="footer__social-link" aria-label="Follow us on Facebook"><i class='bx bxl-facebook' aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -752,7 +757,9 @@ if (!isset($_SESSION['user_id'])) {
         navToggle.addEventListener('click', () => {
             navMenu.classList.toggle('show-menu');
             const icon = navToggle.querySelector('i');
-            if (navMenu.classList.contains('show-menu')) {
+            const isExpanded = navMenu.classList.contains('show-menu');
+            navToggle.setAttribute('aria-expanded', isExpanded);
+            if (isExpanded) {
                 icon.classList.remove('bx-menu');
                 icon.classList.add('bx-x');
             } else {
@@ -779,12 +786,22 @@ if (!isset($_SESSION['user_id'])) {
 
         profileToggle.addEventListener('click', (e) => {
             e.stopPropagation();
-            dropdownMenu.classList.toggle('show');
+            const isExpanded = dropdownMenu.classList.toggle('show');
+            profileToggle.setAttribute('aria-expanded', isExpanded);
+        });
+
+        // Handle keyboard accessibility for profile toggle
+        profileToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                profileToggle.click();
+            }
         });
 
         document.addEventListener('click', (e) => {
             if (!profileToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
                 dropdownMenu.classList.remove('show');
+                profileToggle.setAttribute('aria-expanded', 'false');
             }
         });
 
