@@ -447,7 +447,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <div class="stat-icon">⭐</div>
                                 <div class="stat-content">
                                     <h3 class="stat-number">73+</h3>
-                                    <p class="stat-label">Skills</p>
+                                    <p class="stat-label">Skilled Members</p>
                                 </div>
                             </div>
 
@@ -455,7 +455,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <div class="stat-icon">🎒</div>
                                 <div class="stat-content">
                                     <h3 class="stat-number">6 lakh+</h3>
-                                    <p class="stat-label">Community of Travelers</p>
+                                    <p class="stat-label">Community of Volunteers</p>
                                 </div>
                             </div>
 
@@ -463,7 +463,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <div class="stat-icon">🏔️</div>
                                 <div class="stat-content">
                                     <h3 class="stat-number">45+</h3>
-                                    <p class="stat-label">Touristic Places</p>
+                                    <p class="stat-label">Places We Covered</p>
                                 </div>
                             </div>
                         </div>

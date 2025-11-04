@@ -10,7 +10,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $password = trim($_POST['password']);
   $confirm = trim($_POST['confirm']);
 
-  if ($password !== $confirm) {
+  // Validate password contains only ASCII characters (no emojis)
+  if (!preg_match('/^[\x00-\x7F]+$/', $password)) {
+    $message = "❌ Password must contain only letters, numbers, and symbols (no emojis).";
+  } elseif (strlen($password) < 6) {
+    $message = "❌ Password must be at least 6 characters long.";
+  } elseif ($password !== $confirm) {
     $message = "❌ Passwords do not match.";
   } else {
     $stmt = $conn->prepare("SELECT * FROM users WHERE email=?");
@@ -95,6 +100,9 @@ in."; } else { $message = "❌ Something went wrong. Try again."; } } } } ?>
                 required
                 autocomplete="new-password"
                 aria-required="true"
+                pattern="^[\x00-\x7F]+$"
+                title="Password must contain only letters, numbers, and symbols (no emojis)"
+                minlength="6"
               />
               <label for="password">Password</label>
             </div>
@@ -108,6 +116,9 @@ in."; } else { $message = "❌ Something went wrong. Try again."; } } } } ?>
                 required
                 autocomplete="new-password"
                 aria-required="true"
+                pattern="^[\x00-\x7F]+$"
+                title="Password must contain only letters, numbers, and symbols (no emojis)"
+                minlength="6"
               />
               <label for="confirm">Confirm Password</label>
             </div>
@@ -168,5 +179,94 @@ in."; } else { $message = "❌ Something went wrong. Try again."; } } } } ?>
         </div>
       </section>
     </main>
+
+    <script>
+      // Password validation function
+      function validatePassword(password) {
+        // Check if password contains only ASCII characters (no emojis)
+        const asciiOnly = /^[\x00-\x7F]+$/;
+        return asciiOnly.test(password);
+      }
+
+      // Get form elements
+      const form = document.querySelector('form');
+      const passwordInput = document.getElementById('password');
+      const confirmInput = document.getElementById('confirm');
+
+      // Add real-time validation on password input
+      passwordInput.addEventListener('input', function(e) {
+        const value = e.target.value;
+        if (value && !validatePassword(value)) {
+          e.target.setCustomValidity('Password must contain only letters, numbers, and symbols (no emojis)');
+        } else if (value && value.length < 6) {
+          e.target.setCustomValidity('Password must be at least 6 characters long');
+        } else {
+          e.target.setCustomValidity('');
+        }
+      });
+
+      // Add real-time validation on confirm password input
+      confirmInput.addEventListener('input', function(e) {
+        const value = e.target.value;
+        if (value && !validatePassword(value)) {
+          e.target.setCustomValidity('Password must contain only letters, numbers, and symbols (no emojis)');
+        } else if (value && value !== passwordInput.value) {
+          e.target.setCustomValidity('Passwords do not match');
+        } else {
+          e.target.setCustomValidity('');
+        }
+      });
+
+      // Form submission validation
+      form.addEventListener('submit', function(e) {
+        const password = passwordInput.value;
+        const confirm = confirmInput.value;
+
+        // Validate password
+        if (!validatePassword(password)) {
+          e.preventDefault();
+          alert('❌ Password must contain only letters, numbers, and symbols (no emojis)');
+          passwordInput.focus();
+          return false;
+        }
+
+        // Check minimum length
+        if (password.length < 6) {
+          e.preventDefault();
+          alert('❌ Password must be at least 6 characters long');
+          passwordInput.focus();
+          return false;
+        }
+
+        // Validate confirm password
+        if (!validatePassword(confirm)) {
+          e.preventDefault();
+          alert('❌ Confirm password must contain only letters, numbers, and symbols (no emojis)');
+          confirmInput.focus();
+          return false;
+        }
+
+        // Check if passwords match
+        if (password !== confirm) {
+          e.preventDefault();
+          alert('❌ Passwords do not match');
+          confirmInput.focus();
+          return false;
+        }
+      });
+
+      // Prevent paste of emoji characters
+      [passwordInput, confirmInput].forEach(input => {
+        input.addEventListener('paste', function(e) {
+          setTimeout(() => {
+            const value = e.target.value;
+            if (!validatePassword(value)) {
+              e.target.value = value.replace(/[^\x00-\x7F]/g, '');
+              alert('⚠️ Emojis and special unicode characters are not allowed in passwords');
+            }
+          }, 10);
+        });
+      });
+    </script>
   </body>
 </html>
